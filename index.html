@@ -1,414 +1,378 @@
 <!DOCTYPE html>
 <html lang="en" class="antialiased">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="M-YJzhGUvCIE6pU3B8e787-5PI9dFXgUZlfVKwzYOeg" />
-    <title>Muktadir Somio</title>
-    <meta name="description" content="Muktadir Somio - A student passionate about AI, Tech, Geopolitics, and Politics.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="M-YJzhGUvCIE6pU3B8e787-5PI9dFXgUZlfVKwzYOeg" />
+  <title>Muktadir Somio | Portfolio</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        'paper': '#FAF7F2',
-                        'ink': '#1C1C1C',
-                        'dark-paper': '#15202B',
-                        'dark-ink': '#F7F9FA',
-                    }
-                }
-            }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            accent1: '#e0e0e0',
+            accent2: '#505050',
+            accent3: '#a0a0a0'
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <!-- Fonts with font-display: swap for faster loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap"
-        rel="stylesheet">
+  <style>
+    /* CORE VARIABLES */
+    :root {
+      --bg: #f2f2f2;
+      --fg: #111111;
+      --nav-border: rgba(0,0,0,0.08);
+      --blob-opacity: 0.05;
+      --stroke-color: #111111;
+      --glow-color: rgba(0, 0, 0, 0.15); /* Shadow for light mode */
+    }
+    .dark {
+      --bg: #080808;
+      --fg: #eaeaea;
+      --nav-border: rgba(255,255,255,0.12);
+      --blob-opacity: 0.08;
+      --stroke-color: #eaeaea;
+      --glow-color: rgba(255, 255, 255, 0.25); /* Glow for dark mode */
+    }
 
-    <style>
-        :root {
-            --cursor-size: 20px;
-        }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      overflow: hidden;
+      cursor: none;
+      transition: background 1.0s cubic-bezier(0.2, 0.8, 0.2, 1), color 1.0s ease;
+      font-family: 'Inter', sans-serif;
+    }
 
-        * {
-            scroll-behavior: smooth;
-        }
+    /* CUSTOM CURSOR */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 8px; height: 8px;
+      background: currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      mix-blend-mode: difference;
+    }
+    #cursor-follower {
+      position: fixed;
+      top: 0; left: 0;
+      width: 48px; height: 48px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.2;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, opacity 0.3s;
+    }
 
-        body {
-            cursor: none;
-            overflow-x: hidden;
-            background-color: #FAF7F2;
-            color: #1C1C1C;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hello-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--fg); 
+    }
+    .caret {
+      display: inline-block;
+      width: 4px;
+      height: 1em;
+      background: var(--fg);
+      margin-left: 0.1em;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        .dark body {
-            background-color: #15202B;
-            color: #F7F9FA;
-        }
+    /* AMBIENT BLOBS */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: var(--blob-opacity);
+      z-index: 0;
+      transition: opacity 1s ease;
+    }
 
-        #cursor {
-            position: fixed;
-            width: var(--cursor-size);
-            height: var(--cursor-size);
-            background-color: white;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            mix-blend-mode: difference;
-            opacity: 0;
-            transition: width 0.3s ease, height 0.3s ease, opacity 0.2s ease;
-            transform: translate(-50%, -50%);
-        }
+    /* GLASS TEXT */
+    .glass-text {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--stroke-color); 
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+      -webkit-background-clip: text;
+    }
+    
+    /* NAVBAR - ENHANCED & MAGNETIC */
+    .nav-item {
+      /* Dimensions - Bigger */
+      width: 60px;
+      height: 60px;
+      
+      /* Layout */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      /* Appearance - Glass Effect */
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--nav-border);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+      
+      /* Typography */
+      color: var(--fg);
+      
+      /* Transitions */
+      /* Note: Transform handled by GSAP for magnetic effect, colors by CSS */
+      transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+      
+      position: relative;
+      z-index: 50;
+    }
 
-        #cursor.visible {
-            opacity: 1;
-        }
+    /* Hover State: Magnetic Glow */
+    .nav-item:hover {
+      border-color: var(--fg);
+      /* The "Glow" */
+      box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
+      background: rgba(255,255,255,0.08);
+      color: var(--fg);
+    }
 
-        #cursor.hover {
-            width: 60px;
-            height: 60px;
-        }
+    /* Icon sizing inside nav items */
+    .nav-item svg {
+      width: 26px; /* Bigger icons */
+      height: 26px;
+      stroke-width: 1.5;
+      transition: transform 0.3s ease;
+    }
+    
+    /* LOGO SPECIFIC OVERRIDES */
+    /* Logo is pill shaped, not circle */
+    .nav-logo {
+      width: auto;
+      padding: 0 2rem;
+      border-radius: 9999px;
+    }
 
-        .grain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9000;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .reveal-sub {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .reveal-sub.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .trigger-text {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .trigger-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        a:hover {
-            opacity: 0.7;
-        }
-
-        /* Animated Hello */
-        .hello-word {
-            display: inline-block;
-            position: relative;
-            min-width: 180px;
-        }
-
-        .hello-current,
-        .hello-next {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hello-current {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hello-current.out {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        .hello-next {
-            position: absolute;
-            left: 0;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .hello-next.in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Profile Photo Placeholder */
-        .profile-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 2px solid currentColor;
-            opacity: 0.3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(128, 128, 128, 0.1) 0%, rgba(128, 128, 128, 0.05) 100%);
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 1;
-        }
-
-        .profile-photo svg {
-            width: 60px;
-            height: 60px;
-            opacity: 0.5;
-        }
-    </style>
+    /* HERO TEXT MASKING */
+    .hero-line {
+      transform: translateY(110%); 
+      opacity: 0;
+    }
+    .watermark {
+      opacity: 0;
+      transform: rotate(-35deg);
+      pointer-events: none;
+      z-index: 10; 
+    }
+  </style>
 </head>
+<body class="dark selection:bg-white selection:text-black">
 
-<body class="selection:bg-ink selection:text-paper dark:selection:bg-dark-ink dark:selection:text-dark-paper">
-    <div class="grain"></div>
-    <div id="cursor"></div>
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
 
-    <!-- Navigation -->
-    <nav
-        class="fixed top-0 left-0 w-full p-6 sm:p-8 flex justify-between items-center z-50 mix-blend-difference text-white">
-        <a href="index.html"
-            class="text-sm font-mono font-bold hover:opacity-70 transition-opacity uppercase tracking-wider cursor-none menu-item">Muktadir
-            Somio</a>
-        <div class="flex items-center gap-6 sm:gap-8">
-            <button id="theme-toggle"
-                class="cursor-none menu-item w-10 h-10 flex items-center justify-center rounded-full border border-white hover:bg-white hover:text-black transition-all"
-                aria-label="Toggle Theme">
-                <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-                    </path>
-                </svg>
-                <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                    </path>
-                </svg>
-            </button>
-        </div>
-    </nav>
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="hello-text">
+    <span id="helloTarget"></span><span class="caret"></span>
+  </div>
+</div>
 
-    <main class="w-full relative">
-        <!-- Hero Section -->
-        <section class="h-screen w-full flex items-center px-6 sm:px-12 md:px-24">
-            <div class="flex flex-col md:flex-row items-center justify-between w-full gap-12">
-                <!-- Left: Text Content -->
-                <div class="flex-1">
-                    <div class="min-h-[25vh] sm:min-h-[30vh]">
-                        <h1 class="text-[10vw] sm:text-[11vw] leading-[0.9] font-light tracking-tighter"
-                            id="typewriter-text"></h1>
-                    </div>
-                    <div class="overflow-hidden mt-8 reveal-sub" id="reveal-sub">
-                        <p class="text-lg sm:text-2xl font-mono max-w-xl text-gray-600 dark:text-gray-400">Welcome to my website.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 opacity-0" id="navbar">
+  <!-- LOGO -->
+  <!-- Classes moved to CSS .nav-item and .nav-logo for consistency -->
+  <a href="#" class="nav-item nav-logo font-display font-extrabold tracking-widest text-xl md:text-2xl group">
+    MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
+  </a>
 
-        <!-- About Section -->
-        <section id="about"
-            class="min-h-screen w-full flex flex-col justify-center px-6 sm:px-12 md:px-24 py-24 bg-paper dark:bg-dark-paper relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                <div class="md:col-span-4">
-                    <span
-                        class="text-xs font-mono uppercase tracking-widest text-gray-500 border-b border-gray-300 dark:border-gray-700 pb-2 block mb-8">About
-                        Me</span>
-                </div>
-                <div class="md:col-span-8">
-                    <p class="text-2xl sm:text-4xl md:text-5xl font-light leading-tight mb-12 trigger-text">
-                        <span class="hello-word" id="hello-container">
-                            <span class="hello-current" id="hello-text">Hello,</span>
-                        </span> I am Muktadir Somio, by day- a freshman at <span class="font-medium">ISRT, DU</span> studying
-                        <span class="italic">Applied Statistics</span> and <span class="italic">Data Science</span>.
-                        By night, I explore the realms of politics, psychology, and literature.
-                    </p>
-                    <div class="flex flex-col gap-6">
-                        <a href="blog.html"
-                            class="text-xl sm:text-2xl font-light hover:italic transition-all w-fit cursor-none menu-item flex items-center gap-2 group border-b border-ink dark:border-dark-ink pb-1">
-                            Read My Blog
-                            <span
-                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
-                        </a>
-                        <a href="mailto:somiomuktadir@gmail.com"
-                            class="text-xl sm:text-2xl font-light hover:italic transition-all w-fit cursor-none menu-item flex items-center gap-2 group border-b border-ink dark:border-dark-ink pb-1">
-                            Let's Connect
-                            <span
-                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
-                        </a>
-                        <a href="https://github.com/som1o" target="_blank"
-                            class="text-xl sm:text-2xl font-light hover:italic transition-all w-fit cursor-none menu-item flex items-center gap-2 group border-b border-ink dark:border-dark-ink pb-1">
-                            GitHub Profile
-                            <span
-                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ACTIONS -->
+  <div class="flex gap-4 md:gap-6 items-center">
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="nav-item group" aria-label="Toggle theme">
+      <!-- Sun Icon -->
+      <svg class="hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <!-- Moon Icon -->
+      <svg class="block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    </button>
 
-        <!-- Quote Section -->
-        <section
-            class="min-h-[50vh] w-full flex items-center justify-center px-6 py-24 bg-ink text-paper dark:bg-dark-ink dark:text-dark-paper transition-colors duration-500">
-            <div class="max-w-4xl text-center">
-                <blockquote class="text-3xl sm:text-5xl md:text-6xl font-serif italic mb-8" id="quote-text">
-                </blockquote>
-                <cite class="text-sm font-mono uppercase tracking-widest opacity-60" id="quote-author"></cite>
-            </div>
-        </section>
-    </main>
+    <!-- GitHub -->
+    <a href="https://github.com/som1o" target="_blank" class="nav-item group" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+      </svg>
+    </a>
 
-    <script>
-        // Theme Logic
-        const themeBtn = document.getElementById('theme-toggle');
-        const root = document.documentElement;
-        function setTheme(isDark) {
-            if (isDark) { root.classList.add('dark'); localStorage.theme = 'dark'; }
-            else { root.classList.remove('dark'); localStorage.theme = 'light'; }
-        }
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { setTheme(true); }
-        themeBtn.addEventListener('click', () => setTheme(!root.classList.contains('dark')));
+    <!-- Email -->
+    <a href="mailto:somiomuktadir@gmail.com" class="nav-item group" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+      </svg>
+    </a>
+  </div>
+</nav>
 
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const interactiveElements = document.querySelectorAll('.menu-item, a, button');
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursor.classList.add('visible'); });
-        document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.55;
-            cursorY += (mouseY - cursorY) * 0.55;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-        interactiveElements.forEach(item => {
-            item.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
+<!-- HERO SECTION -->
+<section class="h-screen relative flex items-center justify-center overflow-hidden">
+  <div class="blob w-[40vw] h-[40vw] bg-white top-[-10%] left-[-10%]"></div>
+  <div class="blob w-[35vw] h-[35vw] bg-gray-500 bottom-[-10%] right-[-10%]"></div>
 
-        // Typewriter Effect
-        const textElement = document.getElementById('typewriter-text');
-        const revealSub = document.getElementById('reveal-sub');
-        const textToType = "Always learning and evolving.";
-        let charIndex = 0;
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                textElement.innerHTML = textToType.substring(0, charIndex + 1) + '<span class="cursor-blink">|</span>';
-                charIndex++;
-                setTimeout(typeWriter, 100);
-            } else {
-                textElement.innerHTML = textToType;
-                setTimeout(() => {
-                    revealSub.classList.add('visible');
-                    setTimeout(() => smoothScrollTo(document.getElementById('about')), 1000);
-                }, 300);
-            }
-        }
+  <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+     <div class="watermark text-center font-display font-bold text-[4vw] tracking-widest leading-loose opacity-0 select-none text-current"
+          style="transform: rotate(-35deg); mix-blend-mode: overlay;">
+       STUDENT - ISRT , DU<br/>
+       STATISTICS · DATA SCIENCE<br/>
+       AI , GEOPOLITICS
+     </div>
+  </div>
 
-        // Smooth Scroll (smoother easing)
-        function smoothScrollTo(element) {
-            const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 2000;
-            let startTime = null;
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-                // easeInOutCubic for smoother feel
-                const easing = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                window.scrollTo(0, startPosition + distance * easing);
-                if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
-            requestAnimationFrame(animation);
-        }
-        setTimeout(typeWriter, 500);
+  <div class="relative z-20 text-center px-4 w-full max-w-full">
+    <div class="overflow-hidden">
+      <h1 class="hero-line text-[11vw] leading-[0.9] font-display font-extrabold glass-text tracking-tighter">
+        Muktadir
+      </h1>
+    </div>
+    <div class="overflow-hidden">
+      <h1 class="hero-line text-[11vw] leading-[0.9] font-display font-extrabold glass-text tracking-tighter">
+        Somio
+      </h1>
+    </div>
+  </div>
+</section>
 
-        // Animated Multilingual Hello
-        const greetings = ['Hello,', 'Hola,', 'Salam,', 'Namaste,', 'Salut,', 'Ciao,', 'Hallo,', 'Aloha,', 'Olá,', 'Merhaba,'];
-        let greetingIndex = 0;
-        const helloText = document.getElementById('hello-text');
-        const helloContainer = document.getElementById('hello-container');
+<script>
+  // --- 1. CURSOR LOGIC ---
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursor-follower');
+  
+  document.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+    gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.4 });
+  });
 
-        function cycleHello() {
-            greetingIndex = (greetingIndex + 1) % greetings.length;
-            const current = helloText;
-            const next = document.createElement('span');
-            next.className = 'hello-next';
-            next.textContent = greetings[greetingIndex];
-            helloContainer.appendChild(next);
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      gsap.to(follower, { scale: 1.5, opacity: 0.1, duration: 0.3 });
+    });
+    el.addEventListener('mouseleave', () => {
+      gsap.to(follower, { scale: 1, opacity: 0.2, duration: 0.3 });
+    });
+  });
 
-            current.classList.add('out');
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => next.classList.add('in'));
-            });
+  // --- 2. MAGNETIC BUTTONS (NEW) ---
+  const navItems = document.querySelectorAll('.nav-item');
+  
+  navItems.forEach((item) => {
+    item.addEventListener('mousemove', (e) => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+      const x = (e.clientX - left - width / 2) * 0.5; // Strength of magnetic pull
+      const y = (e.clientY - top - height / 2) * 0.5;
 
-            setTimeout(() => {
-                current.textContent = greetings[greetingIndex];
-                current.classList.remove('out');
-                next.remove();
-            }, 10);
-        }
-        setInterval(cycleHello, 5000);
+      gsap.to(item, {
+        x: x,
+        y: y,
+        duration: 0.4,
+        ease: 'power3.out'
+      });
+    });
 
-        // Random Quotes
-        const quotes = [
-            { text: "That which does not kill us makes us stronger.", author: "Friedrich Nietzsche" },
-            { text: "We become just by performing just actions, temperate by performing temperate actions, brave by performing brave actions.", author: "Aristotle" },
-            { text: "Great things are done by a series of small things brought together.", author: "Vincent Van Gogh" },
-            { text: "It is better to be feared than loved, if you cannot be both.", author: "Niccolò Machiavelli" },
-            { text: "Wise men speak because they have something to say; fools because they have to say something.", author: "Plato" },
-            { text: "Appear weak when you are strong, and strong when you are weak.", author: "Sun Tzu" }
-        ];
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        document.getElementById('quote-text').innerText = `"${randomQuote.text}"`;
-        document.getElementById('quote-author').innerText = `— ${randomQuote.author}`;
+    item.addEventListener('mouseenter', () => {
+      // Slight scale up on hover
+      gsap.to(item, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
+    });
 
-        // Scroll-Triggered Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.trigger-text').forEach(el => observer.observe(el));
-    </script>
+    item.addEventListener('mouseleave', () => {
+      // Spring back to center and original size
+      gsap.to(item, {
+        x: 0,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        ease: 'elastic.out(1, 0.3)'
+      });
+    });
+  });
+
+  // --- 3. MASTER TIMELINE ---
+  const masterTl = gsap.timeline();
+  const helloText = "Hello there, it's me . . .";
+  const helloTarget = document.getElementById('helloTarget');
+  let charIndex = 0;
+  
+  function typeText() {
+    if (charIndex < helloText.length) {
+      helloTarget.textContent += helloText.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, 100);
+    } else {
+      finishPreloader();
+    }
+  }
+
+  function finishPreloader() {
+    gsap.to('#preloader', {
+      yPercent: -100,
+      ease: 'power4.inOut',
+      duration: 1.2,
+      delay: 0.5,
+      onComplete: revealHero
+    });
+  }
+
+  function revealHero() {
+    const tl = gsap.timeline();
+    tl.to('#navbar', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 0);
+    tl.to('.hero-line', { y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: 'power4.out' }, 0.2);
+    tl.to('.watermark', { opacity: 0.15, scale: 1, duration: 2, ease: 'power2.out' }, 0.5);
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(typeText, 500);
+  });
+
+  // --- 4. THEME TOGGLE ---
+  const themeBtn = document.getElementById('themeToggle');
+  themeBtn.onclick = () => {
+    document.body.classList.toggle('dark');
+  };
+</script>
+
 </body>
-
 </html>
