@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muktadir Somio | Writings</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        accent1: '#e0e0e0',
+                        accent2: '#505050',
+                        accent3: '#a0a0a0'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CORE VARIABLES */
+        :root {
+            --bg: #f2f2f2;
+            --fg: #111111;
+            --nav-border: rgba(0, 0, 0, 0.08);
+            --blob-opacity: 0.05;
+            --stroke-color: #111111;
+            --glow-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .dark {
+            --bg: #080808;
+            --fg: #eaeaea;
+            --nav-border: rgba(255, 255, 255, 0.12);
+            --blob-opacity: 0.08;
+            --stroke-color: #eaeaea;
+            --glow-color: rgba(255, 255, 255, 0.25);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            overflow-x: hidden;
+            cursor: none;
+            transition: background 1.0s cubic-bezier(0.2, 0.8, 0.2, 1), color 1.0s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* CUSTOM CURSOR */
+        #cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+        }
+
+        #cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 48px;
+            height: 48px;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.2;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, opacity 0.3s;
+        }
+
+        /* PRELOADER */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hello-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--fg);
+        }
+
+        .caret {
+            display: inline-block;
+            width: 4px;
+            height: 1em;
+            background: var(--fg);
+            margin-left: 0.1em;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* AMBIENT BLOBS */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: var(--blob-opacity);
+            z-index: 0;
+            transition: opacity 1s ease;
+        }
+
+        /* GLASS TEXT */
+        .glass-text {
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--stroke-color);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            -webkit-background-clip: text;
+        }
+
+        /* NAVBAR */
+        .nav-item {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--nav-border);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+            color: var(--fg);
+            transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            position: relative;
+            z-index: 50;
+        }
+
+        .nav-item:hover {
+            border-color: var(--fg);
+            box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--fg);
+        }
+
+        .nav-item svg {
+            width: 26px;
+            height: 26px;
+            stroke-width: 1.5;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo {
+            width: auto;
+            padding: 0 2rem;
+            border-radius: 9999px;
+        }
+
+        /* CONTENT ANIMATION */
+        .animate-up {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        /* POST STYLING */
+        .post-card {
+            padding: 2rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--nav-border);
+            transition: all 0.3s ease;
+        }
+
+        .post-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--fg);
+        }
+
+        /* CUSTOM SCROLLBAR for Archive */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--accent2);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--fg);
+        }
+    </style>
+</head>
+
+<body class="dark selection:bg-white selection:text-black">
+
+    <!-- CURSOR -->
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="hello-text">
+            <span id="helloTarget"></span><span class="caret"></span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 opacity-0" id="navbar">
+        <!-- LOGO -->
+        <a href="index.html"
+            class="nav-item nav-logo font-display font-extrabold tracking-widest text-xl md:text-2xl group">
+            MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
+        </a>
+
+        <!-- ACTIONS -->
+        <div class="flex gap-4 md:gap-6 items-center">
+            <!-- Blog (Current) -->
+            <a href="blog.html" class="nav-item group !border-current !bg-white/10" aria-label="Blog">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+            </a>
+
+            <!-- Theme Toggle -->
+            <button id="themeToggle" class="nav-item group" aria-label="Toggle theme">
+                <svg class="hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg class="block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+
+            <!-- GitHub -->
+            <a href="https://github.com/som1o" target="_blank" class="nav-item group" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:somiomuktadir@gmail.com" class="nav-item group" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="min-h-screen relative pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto z-10">
+        <div class="blob w-[60vw] h-[60vw] bg-white top-[-20%] right-[-20%]"></div>
+        <div class="blob w-[50vw] h-[50vw] bg-gray-500 bottom-[-20%] left-[-20%]"></div>
+
+        <header class="mb-20 animate-up">
+            <h1 class="text-6xl md:text-9xl font-display font-extrabold glass-text tracking-tighter opacity-80">
+                My Writings
+            </h1>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <!-- Latest Post (Featured) -->
+            <div class="md:col-span-8 animate-up">
+                <article class="post-card h-full flex flex-col justify-center">
+                    <h2
+                        class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight hover:text-gray-400 transition-colors">
+                        <a href="posts/my-first-mun-experience.html">My First MUN Experience</a>
+                    </h2>
+                    <p class="text-lg md:text-xl opacity-70 leading-relaxed font-light mb-8 max-w-2xl">
+                        I am remembering the days I first attended a Model United Nations conference. I can safely declare it as a turning point in my life.
+                    </p>
+                    <div class="mt-auto">
+                        <a href="posts/my-first-mun-experience.html"
+                            class="inline-flex items-center gap-2 text-lg group hover:opacity-70 transition-opacity">
+                            <span>Read article</span>
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Archive (Titles Only) -->
+            <div class="md:col-span-4 animate-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-4 opacity-50 mb-6">
+                    <div class="h-[1px] bg-current flex-grow"></div>
+                    <span class="font-mono text-sm tracking-widest uppercase">Archive</span>
+                </div>
+
+                <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- New Post -->
+                    <a href="posts/is-hope-still-a-word.html"
+                        class="block p-6 rounded-lg border border-transparent hover:border-current/20 hover:bg-white/5 transition-all group">
+                        <span class="block text-xs font-mono opacity-40 mb-2">2025</span>
+                        <h3 class="text-xl font-display font-semibold group-hover:translate-x-1 transition-transform">
+                            The Russo-Ukrainian War</h3>
+                    </a>
+
+                    <!-- Placeholder Archive Items -->
+                    <a href="#"
+                        class="block p-6 rounded-lg border border-transparent hover:border-current/20 hover:bg-white/5 transition-all group">
+                        <span class="block text-xs font-mono opacity-40 mb-2">2024</span>
+                        <h3 class="text-xl font-display font-semibold group-hover:translate-x-1 transition-transform">
+                            Lorem Ipsum</h3>
+
+                    <!-- Extra items to demonstrate scrolling if needed, or user adds them later -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- 1. CURSOR LOGIC ---
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.4 });
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                gsap.to(follower, { scale: 1.5, opacity: 0.1, duration: 0.3 });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(follower, { scale: 1, opacity: 0.2, duration: 0.3 });
+            });
+        });
+
+        // --- 2. MAGNETIC BUTTONS (NEW) ---
+        const navItems = document.querySelectorAll('.nav-item');
+
+        navItems.forEach((item) => {
+            item.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = item.getBoundingClientRect();
+                const x = (e.clientX - left - width / 2) * 0.5;
+                const y = (e.clientY - top - height / 2) * 0.5;
+
+                gsap.to(item, {
+                    x: x,
+                    y: y,
+                    duration: 0.4,
+                    ease: 'power3.out'
+                });
+            });
+
+            item.addEventListener('mouseenter', () => {
+                gsap.to(item, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
+            });
+
+            item.addEventListener('mouseleave', () => {
+                gsap.to(item, {
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.7,
+                    ease: 'elastic.out(1, 0.3)'
+                });
+            });
+        });
+
+        // --- 3. PAGE REVEAL ---
+        // Simple reveal for subpages, cleaner than the full typing intro
+        const masterTl = gsap.timeline();
+
+        function revealPage() {
+            gsap.to('#preloader', {
+                yPercent: -100,
+                ease: 'power4.inOut',
+                duration: 1.0,
+                onComplete: () => {
+                    gsap.to('#navbar', { opacity: 1, duration: 0.8 });
+                    gsap.to('.animate-up', {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        stagger: 0.1,
+                        ease: 'power3.out'
+                    });
+                }
+            });
+        }
+
+        // Use a shorter text for subpages
+        const helloTarget = document.getElementById('helloTarget');
+        helloTarget.textContent = "I love to write sometimes . . .";
+
+        window.addEventListener('load', () => {
+            setTimeout(revealPage, 2500);
+        });
+
+        // --- 4. THEME TOGGLE ---
+        const themeBtn = document.getElementById('themeToggle');
+        themeBtn.onclick = () => {
+            document.body.classList.toggle('dark');
+        };
+    </script>
+
+</body>
+
+</html>

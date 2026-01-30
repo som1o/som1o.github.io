@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="antialiased">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +13,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -38,18 +40,21 @@
     :root {
       --bg: #f2f2f2;
       --fg: #111111;
-      --nav-border: rgba(0,0,0,0.08);
+      --nav-border: rgba(0, 0, 0, 0.08);
       --blob-opacity: 0.05;
       --stroke-color: #111111;
-      --glow-color: rgba(0, 0, 0, 0.15); /* Shadow for light mode */
+      --glow-color: rgba(0, 0, 0, 0.15);
+      /* Shadow for light mode */
     }
+
     .dark {
       --bg: #080808;
       --fg: #eaeaea;
-      --nav-border: rgba(255,255,255,0.12);
+      --nav-border: rgba(255, 255, 255, 0.12);
       --blob-opacity: 0.08;
       --stroke-color: #eaeaea;
-      --glow-color: rgba(255, 255, 255, 0.25); /* Glow for dark mode */
+      --glow-color: rgba(255, 255, 255, 0.25);
+      /* Glow for dark mode */
     }
 
     body {
@@ -64,18 +69,23 @@
     /* CUSTOM CURSOR */
     #cursor {
       position: fixed;
-      top: 0; left: 0;
-      width: 8px; height: 8px;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
       background: currentColor;
       border-radius: 50%;
       pointer-events: none;
       z-index: 10000;
       mix-blend-mode: difference;
     }
+
     #cursor-follower {
       position: fixed;
-      top: 0; left: 0;
-      width: 48px; height: 48px;
+      top: 0;
+      left: 0;
+      width: 48px;
+      height: 48px;
       border: 1px solid currentColor;
       border-radius: 50%;
       pointer-events: none;
@@ -95,12 +105,14 @@
       align-items: center;
       justify-content: center;
     }
+
     .hello-text {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: clamp(2rem, 5vw, 4rem);
-      color: var(--fg); 
+      color: var(--fg);
     }
+
     .caret {
       display: inline-block;
       width: 4px;
@@ -110,7 +122,18 @@
       vertical-align: middle;
       animation: blink 1s infinite;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
 
     /* AMBIENT BLOBS */
     .blob {
@@ -125,36 +148,37 @@
     /* GLASS TEXT */
     .glass-text {
       color: transparent;
-      -webkit-text-stroke: 1.5px var(--stroke-color); 
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+      -webkit-text-stroke: 1.5px var(--stroke-color);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
       -webkit-background-clip: text;
+      background-clip: text;
     }
-    
+
     /* NAVBAR - ENHANCED & MAGNETIC */
     .nav-item {
       /* Dimensions - Bigger */
       width: 60px;
       height: 60px;
-      
+
       /* Layout */
       display: flex;
       align-items: center;
       justify-content: center;
-      
+
       /* Appearance - Glass Effect */
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--nav-border);
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
-      
+
       /* Typography */
       color: var(--fg);
-      
+
       /* Transitions */
       /* Note: Transform handled by GSAP for magnetic effect, colors by CSS */
       transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-      
+
       position: relative;
       z-index: 50;
     }
@@ -164,18 +188,19 @@
       border-color: var(--fg);
       /* The "Glow" */
       box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--fg);
     }
 
     /* Icon sizing inside nav items */
     .nav-item svg {
-      width: 26px; /* Bigger icons */
+      width: 26px;
+      /* Bigger icons */
       height: 26px;
       stroke-width: 1.5;
       transition: transform 0.3s ease;
     }
-    
+
     /* LOGO SPECIFIC OVERRIDES */
     /* Logo is pill shaped, not circle */
     .nav-logo {
@@ -186,193 +211,208 @@
 
     /* HERO TEXT MASKING */
     .hero-line {
-      transform: translateY(110%); 
+      transform: translateY(110%);
       opacity: 0;
     }
+
     .watermark {
       opacity: 0;
       transform: rotate(-35deg);
       pointer-events: none;
-      z-index: 10; 
+      z-index: 10;
     }
   </style>
 </head>
+
 <body class="dark selection:bg-white selection:text-black">
 
-<!-- CURSOR -->
-<div id="cursor"></div>
-<div id="cursor-follower"></div>
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="hello-text">
-    <span id="helloTarget"></span><span class="caret"></span>
-  </div>
-</div>
-
-<!-- NAVBAR -->
-<nav class="fixed top-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 opacity-0" id="navbar">
-  <!-- LOGO -->
-  <!-- Classes moved to CSS .nav-item and .nav-logo for consistency -->
-  <a href="#" class="nav-item nav-logo font-display font-extrabold tracking-widest text-xl md:text-2xl group">
-    MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
-  </a>
-
-  <!-- ACTIONS -->
-  <div class="flex gap-4 md:gap-6 items-center">
-    <!-- Theme Toggle -->
-    <button id="themeToggle" class="nav-item group" aria-label="Toggle theme">
-      <!-- Sun Icon -->
-      <svg class="hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-      <!-- Moon Icon -->
-      <svg class="block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-      </svg>
-    </button>
-
-    <!-- GitHub -->
-    <a href="https://github.com/som1o" target="_blank" class="nav-item group" aria-label="GitHub">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-      </svg>
-    </a>
-
-    <!-- Email -->
-    <a href="mailto:somiomuktadir@gmail.com" class="nav-item group" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-      </svg>
-    </a>
-  </div>
-</nav>
-
-<!-- HERO SECTION -->
-<section class="h-screen relative flex items-center justify-center overflow-hidden">
-  <div class="blob w-[40vw] h-[40vw] bg-white top-[-10%] left-[-10%]"></div>
-  <div class="blob w-[35vw] h-[35vw] bg-gray-500 bottom-[-10%] right-[-10%]"></div>
-
-  <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-     <div class="watermark text-center font-display font-bold text-[4vw] tracking-widest leading-loose opacity-0 select-none text-current"
-          style="transform: rotate(-35deg); mix-blend-mode: overlay;">
-       STUDENT - ISRT , DU<br/>
-       STATISTICS · DATA SCIENCE<br/>
-       AI , GEOPOLITICS
-     </div>
-  </div>
-
-  <div class="relative z-20 text-center px-4 w-full max-w-full">
-    <div class="overflow-hidden">
-      <h1 class="hero-line text-[11vw] leading-[0.9] font-display font-extrabold glass-text tracking-tighter">
-        Muktadir
-      </h1>
-    </div>
-    <div class="overflow-hidden">
-      <h1 class="hero-line text-[11vw] leading-[0.9] font-display font-extrabold glass-text tracking-tighter">
-        Somio
-      </h1>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="hello-text">
+      <span id="helloTarget"></span><span class="caret"></span>
     </div>
   </div>
-</section>
 
-<script>
-  // --- 1. CURSOR LOGIC ---
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursor-follower');
-  
-  document.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
-    gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.4 });
-  });
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 opacity-0" id="navbar">
+    <!-- LOGO -->
+    <!-- Classes moved to CSS .nav-item and .nav-logo for consistency -->
+    <a href="#" class="nav-item nav-logo font-display font-extrabold tracking-widest text-xl md:text-2xl group">
+      MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
+    </a>
 
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      gsap.to(follower, { scale: 1.5, opacity: 0.1, duration: 0.3 });
+    <!-- ACTIONS -->
+    <div class="flex gap-4 md:gap-6 items-center">
+      <!-- Blog Link -->
+      <a href="blog.html" class="nav-item group" aria-label="Blog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </a>
+      <!-- Theme Toggle -->
+      <button id="themeToggle" class="nav-item group" aria-label="Toggle theme">
+        <!-- Sun Icon -->
+        <svg class="hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <!-- Moon Icon -->
+        <svg class="block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+
+      <!-- GitHub -->
+      <a href="https://github.com/som1o" target="_blank" class="nav-item group" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+          </path>
+        </svg>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:somiomuktadir@gmail.com" class="nav-item group" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="h-screen relative flex items-center justify-center overflow-hidden">
+    <div class="blob w-[40vw] h-[40vw] bg-white top-[-10%] left-[-10%]"></div>
+    <div class="blob w-[35vw] h-[35vw] bg-gray-500 bottom-[-10%] right-[-10%]"></div>
+
+    <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+      <div
+        class="watermark text-center font-display font-bold text-[4vw] tracking-widest leading-loose opacity-0 select-none text-current"
+        style="transform: rotate(-35deg); mix-blend-mode: overlay;">
+        STUDENT - ISRT , DU<br />
+        STATISTICS · DATA SCIENCE<br />
+        AI , GEOPOLITICS
+      </div>
+    </div>
+
+    <div class="relative z-20 text-center px-4 w-full max-w-full">
+      <div class="overflow-hidden">
+        <h1 class="hero-line text-[11vw] leading-[0.9] font-display font-extrabold glass-text tracking-tighter">
+          Muktadir
+        </h1>
+      </div>
+      <div class="overflow-hidden">
+        <h1 class="hero-line text-[11vw] leading-[0.9] font-display font-extrabold glass-text tracking-tighter">
+          Somio
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // --- 1. CURSOR LOGIC ---
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursor-follower');
+
+    document.addEventListener('mousemove', (e) => {
+      gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+      gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.4 });
     });
-    el.addEventListener('mouseleave', () => {
-      gsap.to(follower, { scale: 1, opacity: 0.2, duration: 0.3 });
-    });
-  });
 
-  // --- 2. MAGNETIC BUTTONS (NEW) ---
-  const navItems = document.querySelectorAll('.nav-item');
-  
-  navItems.forEach((item) => {
-    item.addEventListener('mousemove', (e) => {
-      const { left, top, width, height } = item.getBoundingClientRect();
-      const x = (e.clientX - left - width / 2) * 0.5; // Strength of magnetic pull
-      const y = (e.clientY - top - height / 2) * 0.5;
-
-      gsap.to(item, {
-        x: x,
-        y: y,
-        duration: 0.4,
-        ease: 'power3.out'
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        gsap.to(follower, { scale: 1.5, opacity: 0.1, duration: 0.3 });
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(follower, { scale: 1, opacity: 0.2, duration: 0.3 });
       });
     });
 
-    item.addEventListener('mouseenter', () => {
-      // Slight scale up on hover
-      gsap.to(item, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
-    });
+    // --- 2. MAGNETIC BUTTONS (NEW) ---
+    const navItems = document.querySelectorAll('.nav-item');
 
-    item.addEventListener('mouseleave', () => {
-      // Spring back to center and original size
-      gsap.to(item, {
-        x: 0,
-        y: 0,
-        scale: 1,
-        duration: 0.7,
-        ease: 'elastic.out(1, 0.3)'
+    navItems.forEach((item) => {
+      item.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = item.getBoundingClientRect();
+        const x = (e.clientX - left - width / 2) * 0.5; // Strength of magnetic pull
+        const y = (e.clientY - top - height / 2) * 0.5;
+
+        gsap.to(item, {
+          x: x,
+          y: y,
+          duration: 0.4,
+          ease: 'power3.out'
+        });
+      });
+
+      item.addEventListener('mouseenter', () => {
+        // Slight scale up on hover
+        gsap.to(item, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        // Spring back to center and original size
+        gsap.to(item, {
+          x: 0,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: 'elastic.out(1, 0.3)'
+        });
       });
     });
-  });
 
-  // --- 3. MASTER TIMELINE ---
-  const masterTl = gsap.timeline();
-  const helloText = "Hello there, it's me . . .";
-  const helloTarget = document.getElementById('helloTarget');
-  let charIndex = 0;
-  
-  function typeText() {
-    if (charIndex < helloText.length) {
-      helloTarget.textContent += helloText.charAt(charIndex);
-      charIndex++;
-      setTimeout(typeText, 100);
-    } else {
-      finishPreloader();
+    // --- 3. MASTER TIMELINE ---
+    const masterTl = gsap.timeline();
+    const helloText = "Hello there, I am . . .";
+    const helloTarget = document.getElementById('helloTarget');
+    let charIndex = 0;
+
+    function typeText() {
+      if (charIndex < helloText.length) {
+        helloTarget.textContent += helloText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, 100);
+      } else {
+        finishPreloader();
+      }
     }
-  }
 
-  function finishPreloader() {
-    gsap.to('#preloader', {
-      yPercent: -100,
-      ease: 'power4.inOut',
-      duration: 1.2,
-      delay: 0.5,
-      onComplete: revealHero
+    function finishPreloader() {
+      gsap.to('#preloader', {
+        yPercent: -100,
+        ease: 'power4.inOut',
+        duration: 1.2,
+        delay: 0.5,
+        onComplete: revealHero
+      });
+    }
+
+    function revealHero() {
+      const tl = gsap.timeline();
+      tl.to('#navbar', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 0);
+      tl.to('.hero-line', { y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: 'power4.out' }, 0.2);
+      tl.to('.watermark', { opacity: 0.15, scale: 1, duration: 2, ease: 'power2.out' }, 0.5);
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(typeText, 500);
     });
-  }
 
-  function revealHero() {
-    const tl = gsap.timeline();
-    tl.to('#navbar', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 0);
-    tl.to('.hero-line', { y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: 'power4.out' }, 0.2);
-    tl.to('.watermark', { opacity: 0.15, scale: 1, duration: 2, ease: 'power2.out' }, 0.5);
-  }
-
-  window.addEventListener('load', () => {
-    setTimeout(typeText, 500);
-  });
-
-  // --- 4. THEME TOGGLE ---
-  const themeBtn = document.getElementById('themeToggle');
-  themeBtn.onclick = () => {
-    document.body.classList.toggle('dark');
-  };
-</script>
+    // --- 4. THEME TOGGLE ---
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.onclick = () => {
+      document.body.classList.toggle('dark');
+    };
+  </script>
 
 </body>
+
 </html>
