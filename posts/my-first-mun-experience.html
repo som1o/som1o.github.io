@@ -27,26 +27,15 @@
 
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 opacity-0" id="navbar">
-        <!-- LOGO -->
-        <a href="../index.html"
-            class="nav-item nav-logo font-display font-extrabold tracking-widest text-xl md:text-2xl group">
-            MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
-        </a>
-
-        <!-- ACTIONS -->
-        <div class="flex gap-4 md:gap-6 items-center">
-            <!-- Back to Blog -->
-            <a href="../blog.html" class="nav-item group" aria-label="Back to Blog">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" class="rotate-180">
-                    <path d="m13 17 5-5-5-5"></path>
-                    <path d="M6 12h12"></path>
-                </svg>
+    <header class="navbar" id="navbar">
+        <div class="container nav-shell">
+            <!-- LOGO -->
+            <a href="../index.html" class="nav-item nav-logo font-display group">
+                MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
             </a>
 
         </div>
-    </nav>
+    </header>
 
     <!-- MAIN CONTENT -->
     <main class="min-h-screen relative pt-32 pb-20 px-6 md:px-12 max-w-4xl mx-auto z-10">
@@ -102,8 +91,9 @@
             <p class="font-mono text-sm opacity-50">
                 — Muktadir
             </p>
-        </article>
-
+                </article>
+            </div>
+        </section>
     </main>
 
     <script src="../scripts/site.js"></script>
