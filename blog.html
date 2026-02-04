@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles/site.css">
 </head>
@@ -69,6 +70,24 @@
                     </svg>
                 </a>
             </div>
+            <!-- GitHub -->
+            <a href="https://github.com/som1o" target="_blank" class="nav-item group" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:somiomuktadir@gmail.com" class="nav-item group" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+            </a>
         </div>
     </header>
 
@@ -137,6 +156,74 @@
                             </div>
                         </div>
                     </div>
+    <main class="min-h-screen relative pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto z-10">
+        <div class="blob w-[60vw] h-[60vw] top-[-20%] right-[-20%]"
+            style="--blob-color: rgba(255, 181, 232, 0.3);"></div>
+        <div class="blob w-[50vw] h-[50vw] bottom-[-20%] left-[-20%]"
+            style="--blob-color: rgba(154, 223, 255, 0.28);"></div>
+
+        <header class="mb-20 animate-up">
+            <h1 class="text-6xl md:text-9xl font-display font-extrabold glass-text tracking-tighter opacity-80">
+                My Writings
+            </h1>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <!-- Latest Post (Featured) -->
+            <div class="md:col-span-8 animate-up">
+                <article class="post-card h-full flex flex-col justify-center">
+                    <h2
+                        class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight hover:text-gray-400 transition-colors">
+                        <a href="posts/quiet-interfaces.html">Designing Quiet Interfaces</a>
+                    </h2>
+                    <p class="text-lg md:text-xl opacity-70 leading-relaxed font-light mb-8 max-w-2xl">
+                        A reflection on building calm, breathable digital spaces where typography, motion, and restraint do the talking.
+                    </p>
+                    <div class="mt-auto">
+                        <a href="posts/quiet-interfaces.html"
+                            class="inline-flex items-center gap-2 text-lg group hover:opacity-70 transition-opacity">
+                            <span>Read article</span>
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Archive (Titles Only) -->
+            <div class="md:col-span-4 animate-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-4 opacity-50 mb-6">
+                    <div class="h-[1px] bg-current flex-grow"></div>
+                    <span class="font-mono text-sm tracking-widest uppercase">Archive</span>
+                </div>
+
+                <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- New Post -->
+                    <a href="posts/quiet-interfaces.html"
+                        class="block p-6 rounded-lg border border-transparent hover:border-current/20 hover:bg-white/5 transition-all group">
+                        <span class="block text-xs font-mono opacity-40 mb-2">2026</span>
+                        <h3 class="text-xl font-display font-semibold group-hover:translate-x-1 transition-transform">
+                            Designing Quiet Interfaces</h3>
+                    </a>
+
+                    <a href="posts/is-hope-still-a-word.html"
+                        class="block p-6 rounded-lg border border-transparent hover:border-current/20 hover:bg-white/5 transition-all group">
+                        <span class="block text-xs font-mono opacity-40 mb-2">2025</span>
+                        <h3 class="text-xl font-display font-semibold group-hover:translate-x-1 transition-transform">
+                            The Russo-Ukrainian War</h3>
+                    </a>
+
+                    <a href="posts/my-first-mun-experience.html"
+                        class="block p-6 rounded-lg border border-transparent hover:border-current/20 hover:bg-white/5 transition-all group">
+                        <span class="block text-xs font-mono opacity-40 mb-2">2026</span>
+                        <h3 class="text-xl font-display font-semibold group-hover:translate-x-1 transition-transform">
+                            My First MUN Experience</h3>
+                    </a>
+
+                    <!-- Extra items to demonstrate scrolling if needed, or user adds them later -->
                 </div>
             </div>
         </section>
