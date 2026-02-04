@@ -13,12 +13,12 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles/site.css">
 </head>
 
-<body class="dark selection:bg-white selection:text-black" data-page="home">
+<body class="selection:bg-white selection:text-black" data-page="home">
 
   <!-- CURSOR -->
   <div id="cursor"></div>
@@ -27,7 +27,8 @@
   <!-- PRELOADER -->
   <div id="preloader">
     <div class="preloader-logo">MS/05</div>
-    <div class="preloader-bar" aria-hidden="true"></div>
+    <div class="preloader-wheel" role="status" aria-label="Loading"></div>
+    <div class="preloader-caption">Preparing the space</div>
   </div>
 
   <!-- NAVBAR -->
@@ -47,20 +48,6 @@
           <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
         </svg>
       </a>
-      <!-- Theme Toggle -->
-      <button id="themeToggle" class="nav-item group" aria-label="Toggle theme">
-        <!-- Sun Icon -->
-        <svg class="hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        <!-- Moon Icon -->
-        <svg class="block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-      </button>
-
       <!-- GitHub -->
       <a href="https://github.com/som1o" target="_blank" class="nav-item group" aria-label="GitHub">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -82,11 +69,11 @@
 
   <!-- HERO SECTION -->
   <section class="h-screen relative flex items-center justify-center overflow-hidden">
-    <div class="blob w-[42vw] h-[42vw] top-[-12%] left-[-10%]" style="--blob-color: rgba(255, 139, 215, 0.7);">
+    <div class="blob w-[42vw] h-[42vw] top-[-12%] left-[-10%]" style="--blob-color: rgba(255, 181, 232, 0.35);">
     </div>
-    <div class="blob w-[35vw] h-[35vw] bottom-[-12%] right-[-10%]" style="--blob-color: rgba(90, 215, 255, 0.6);">
+    <div class="blob w-[35vw] h-[35vw] bottom-[-12%] right-[-10%]" style="--blob-color: rgba(154, 223, 255, 0.3);">
     </div>
-    <div class="blob w-[28vw] h-[28vw] bottom-[10%] left-[20%]" style="--blob-color: rgba(167, 139, 250, 0.55);">
+    <div class="blob w-[28vw] h-[28vw] bottom-[10%] left-[20%]" style="--blob-color: rgba(183, 168, 255, 0.3);">
     </div>
 
     <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
