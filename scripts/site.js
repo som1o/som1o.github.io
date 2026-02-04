@@ -157,9 +157,24 @@
     });
   };
 
+  const initMobileMenu = () => {
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) {
+      return;
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = body.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+  };
+
   const initPage = () => {
     initCursor();
     initMagneticButtons();
+    initMobileMenu();
 
     if (body.dataset.page === 'home') {
       handlePreloader();
