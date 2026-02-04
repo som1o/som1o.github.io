@@ -7,25 +7,6 @@
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('cursor-follower');
 
-  const setTheme = (theme) => {
-    if (theme === 'dark') {
-      body.classList.add('dark');
-    } else {
-      body.classList.remove('dark');
-    }
-    body.classList.add('theme-ready');
-    localStorage.setItem('theme', theme);
-  };
-
-  const initTheme = () => {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light' || saved === 'dark') {
-      setTheme(saved);
-      return;
-    }
-    setTheme(body.classList.contains('dark') ? 'dark' : 'light');
-  };
-
   const initCursor = () => {
     if (!cursor || !follower) {
       return;
@@ -176,24 +157,9 @@
     });
   };
 
-  const initThemeToggle = () => {
-    const themeBtn = document.getElementById('themeToggle');
-    if (!themeBtn) {
-      return;
-    }
-    themeBtn.setAttribute('aria-pressed', body.classList.contains('dark'));
-    themeBtn.addEventListener('click', () => {
-      const nextTheme = body.classList.contains('dark') ? 'light' : 'dark';
-      setTheme(nextTheme);
-      themeBtn.setAttribute('aria-pressed', nextTheme === 'dark');
-    });
-  };
-
   const initPage = () => {
-    initTheme();
     initCursor();
     initMagneticButtons();
-    initThemeToggle();
 
     if (body.dataset.page === 'home') {
       handlePreloader();
