@@ -15,216 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Syne', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            accent1: '#e0e0e0',
-            accent2: '#505050',
-            accent3: '#a0a0a0'
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    /* CORE VARIABLES */
-    :root {
-      --bg: #f2f2f2;
-      --fg: #111111;
-      --nav-border: rgba(0, 0, 0, 0.08);
-      --blob-opacity: 0.05;
-      --stroke-color: #111111;
-      --glow-color: rgba(0, 0, 0, 0.15);
-      /* Shadow for light mode */
-    }
-
-    .dark {
-      --bg: #080808;
-      --fg: #eaeaea;
-      --nav-border: rgba(255, 255, 255, 0.12);
-      --blob-opacity: 0.08;
-      --stroke-color: #eaeaea;
-      --glow-color: rgba(255, 255, 255, 0.25);
-      /* Glow for dark mode */
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      overflow: hidden;
-      cursor: none;
-      transition: background 1.0s cubic-bezier(0.2, 0.8, 0.2, 1), color 1.0s ease;
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* CUSTOM CURSOR */
-    #cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 8px;
-      height: 8px;
-      background: currentColor;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      mix-blend-mode: difference;
-    }
-
-    #cursor-follower {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 48px;
-      height: 48px;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.2;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s, opacity 0.3s;
-    }
-
-    /* PRELOADER */
-    #preloader {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      z-index: 9000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hello-text {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 4rem);
-      color: var(--fg);
-    }
-
-    .caret {
-      display: inline-block;
-      width: 4px;
-      height: 1em;
-      background: var(--fg);
-      margin-left: 0.1em;
-      vertical-align: middle;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0;
-      }
-    }
-
-    /* AMBIENT BLOBS */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: var(--blob-opacity);
-      z-index: 0;
-      transition: opacity 1s ease;
-    }
-
-    /* GLASS TEXT */
-    .glass-text {
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--stroke-color);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-
-    /* NAVBAR - ENHANCED & MAGNETIC */
-    .nav-item {
-      /* Dimensions - Bigger */
-      width: 60px;
-      height: 60px;
-
-      /* Layout */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      /* Appearance - Glass Effect */
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--nav-border);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
-
-      /* Typography */
-      color: var(--fg);
-
-      /* Transitions */
-      /* Note: Transform handled by GSAP for magnetic effect, colors by CSS */
-      transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-
-      position: relative;
-      z-index: 50;
-    }
-
-    /* Hover State: Magnetic Glow */
-    .nav-item:hover {
-      border-color: var(--fg);
-      /* The "Glow" */
-      box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--fg);
-    }
-
-    /* Icon sizing inside nav items */
-    .nav-item svg {
-      width: 26px;
-      /* Bigger icons */
-      height: 26px;
-      stroke-width: 1.5;
-      transition: transform 0.3s ease;
-    }
-
-    /* LOGO SPECIFIC OVERRIDES */
-    /* Logo is pill shaped, not circle */
-    .nav-logo {
-      width: auto;
-      padding: 0 2rem;
-      border-radius: 9999px;
-    }
-
-    /* HERO TEXT MASKING */
-    .hero-line {
-      transform: translateY(110%);
-      opacity: 0;
-    }
-
-    .watermark {
-      opacity: 0;
-      transform: rotate(-35deg);
-      pointer-events: none;
-      z-index: 10;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/site.css">
 </head>
 
-<body class="dark selection:bg-white selection:text-black">
+<body class="dark selection:bg-white selection:text-black" data-page="home">
 
   <!-- CURSOR -->
   <div id="cursor"></div>
@@ -232,9 +26,8 @@
 
   <!-- PRELOADER -->
   <div id="preloader">
-    <div class="hello-text">
-      <span id="helloTarget"></span><span class="caret"></span>
-    </div>
+    <div class="preloader-logo">MS/05</div>
+    <div class="preloader-bar" aria-hidden="true"></div>
   </div>
 
   <!-- NAVBAR -->
@@ -289,8 +82,12 @@
 
   <!-- HERO SECTION -->
   <section class="h-screen relative flex items-center justify-center overflow-hidden">
-    <div class="blob w-[40vw] h-[40vw] bg-white top-[-10%] left-[-10%]"></div>
-    <div class="blob w-[35vw] h-[35vw] bg-gray-500 bottom-[-10%] right-[-10%]"></div>
+    <div class="blob w-[42vw] h-[42vw] top-[-12%] left-[-10%]" style="--blob-color: rgba(255, 139, 215, 0.7);">
+    </div>
+    <div class="blob w-[35vw] h-[35vw] bottom-[-12%] right-[-10%]" style="--blob-color: rgba(90, 215, 255, 0.6);">
+    </div>
+    <div class="blob w-[28vw] h-[28vw] bottom-[10%] left-[20%]" style="--blob-color: rgba(167, 139, 250, 0.55);">
+    </div>
 
     <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <div
@@ -316,102 +113,7 @@
     </div>
   </section>
 
-  <script>
-    // --- 1. CURSOR LOGIC ---
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
-
-    document.addEventListener('mousemove', (e) => {
-      gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
-      gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.4 });
-    });
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        gsap.to(follower, { scale: 1.5, opacity: 0.1, duration: 0.3 });
-      });
-      el.addEventListener('mouseleave', () => {
-        gsap.to(follower, { scale: 1, opacity: 0.2, duration: 0.3 });
-      });
-    });
-
-    // --- 2. MAGNETIC BUTTONS (NEW) ---
-    const navItems = document.querySelectorAll('.nav-item');
-
-    navItems.forEach((item) => {
-      item.addEventListener('mousemove', (e) => {
-        const { left, top, width, height } = item.getBoundingClientRect();
-        const x = (e.clientX - left - width / 2) * 0.5; // Strength of magnetic pull
-        const y = (e.clientY - top - height / 2) * 0.5;
-
-        gsap.to(item, {
-          x: x,
-          y: y,
-          duration: 0.4,
-          ease: 'power3.out'
-        });
-      });
-
-      item.addEventListener('mouseenter', () => {
-        // Slight scale up on hover
-        gsap.to(item, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
-      });
-
-      item.addEventListener('mouseleave', () => {
-        // Spring back to center and original size
-        gsap.to(item, {
-          x: 0,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          ease: 'elastic.out(1, 0.3)'
-        });
-      });
-    });
-
-    // --- 3. MASTER TIMELINE ---
-    const masterTl = gsap.timeline();
-    const helloText = "Hello there, I am . . .";
-    const helloTarget = document.getElementById('helloTarget');
-    let charIndex = 0;
-
-    function typeText() {
-      if (charIndex < helloText.length) {
-        helloTarget.textContent += helloText.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeText, 100);
-      } else {
-        finishPreloader();
-      }
-    }
-
-    function finishPreloader() {
-      gsap.to('#preloader', {
-        yPercent: -100,
-        ease: 'power4.inOut',
-        duration: 1.2,
-        delay: 0.5,
-        onComplete: revealHero
-      });
-    }
-
-    function revealHero() {
-      const tl = gsap.timeline();
-      tl.to('#navbar', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 0);
-      tl.to('.hero-line', { y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: 'power4.out' }, 0.2);
-      tl.to('.watermark', { opacity: 0.15, scale: 1, duration: 2, ease: 'power2.out' }, 0.5);
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(typeText, 500);
-    });
-
-    // --- 4. THEME TOGGLE ---
-    const themeBtn = document.getElementById('themeToggle');
-    themeBtn.onclick = () => {
-      document.body.classList.toggle('dark');
-    };
-  </script>
+  <script src="scripts/site.js"></script>
 
 </body>
 

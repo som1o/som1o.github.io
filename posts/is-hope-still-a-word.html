@@ -15,181 +15,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        display: ['Syne', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        accent1: '#e0e0e0',
-                        accent2: '#505050',
-                        accent3: '#a0a0a0'
-                    },
-                    typography: (theme) => ({
-                        DEFAULT: {
-                            css: {
-                                color: 'var(--fg)',
-                                a: {
-                                    color: 'var(--fg)',
-                                    '&:hover': { opacity: 0.7 },
-                                },
-                                h1: { fontFamily: 'Syne, sans-serif' },
-                                h2: { fontFamily: 'Syne, sans-serif' },
-                                h3: { fontFamily: 'Syne, sans-serif' },
-                            },
-                        },
-                    }),
-                }
-            },
-            plugins: [
-            ]
-        }
-    </script>
-
-    <style>
-        /* CORE VARIABLES */
-        :root {
-            --bg: #f2f2f2;
-            --fg: #111111;
-            --nav-border: rgba(0, 0, 0, 0.08);
-            --blob-opacity: 0.05;
-            --stroke-color: #111111;
-            --glow-color: rgba(0, 0, 0, 0.15);
-        }
-
-        .dark {
-            --bg: #080808;
-            --fg: #eaeaea;
-            --nav-border: rgba(255, 255, 255, 0.12);
-            --blob-opacity: 0.08;
-            --stroke-color: #eaeaea;
-            --glow-color: rgba(255, 255, 255, 0.25);
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--fg);
-            overflow-x: hidden;
-            cursor: none;
-            transition: background 1.0s cubic-bezier(0.2, 0.8, 0.2, 1), color 1.0s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* CUSTOM CURSOR */
-        #cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            mix-blend-mode: difference;
-        }
-
-        #cursor-follower {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 48px;
-            height: 48px;
-            border: 1px solid currentColor;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.2;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, opacity 0.3s;
-        }
-
-
-
-        /* AMBIENT BLOBS */
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: var(--blob-opacity);
-            z-index: 0;
-            transition: opacity 1s ease;
-        }
-
-        /* NAVBAR */
-        .nav-item {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--nav-border);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
-            color: var(--fg);
-            transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-            position: relative;
-            z-index: 50;
-        }
-
-        .nav-item:hover {
-            border-color: var(--fg);
-            box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--fg);
-        }
-
-        .nav-item svg {
-            width: 26px;
-            height: 26px;
-            stroke-width: 1.5;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-logo {
-            width: auto;
-            padding: 0 2rem;
-            border-radius: 9999px;
-        }
-
-        /* ARTICLE TYPOGRAPHY */
-        article p {
-            margin-bottom: 1.5em;
-            line-height: 1.8;
-        }
-
-        article h2 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        article blockquote {
-            border-left: 2px solid currentColor;
-            padding-left: 1.5rem;
-            font-style: italic;
-            opacity: 0.8;
-            margin: 2rem 0;
-        }
-
-        /* CONTENT ANIMATION */
-        .animate-up {
-            transform: translateY(30px);
-            opacity: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/site.css">
 </head>
 
-<body class="dark selection:bg-white selection:text-black">
+<body class="dark selection:bg-white selection:text-black" data-page="post">
 
     <!-- CURSOR -->
     <div id="cursor"></div>
@@ -232,8 +61,10 @@
 
     <!-- MAIN CONTENT -->
     <main class="min-h-screen relative pt-32 pb-20 px-6 md:px-12 max-w-4xl mx-auto z-10">
-        <div class="blob w-[60vw] h-[60vw] bg-white top-[-20%] left-[-20%]"></div>
-        <div class="blob w-[30vw] h-[30vw] bg-gray-500 bottom-[10%] right-[-10%]"></div>
+        <div class="blob w-[60vw] h-[60vw] top-[-20%] left-[-20%]"
+            style="--blob-color: rgba(255, 139, 215, 0.55);"></div>
+        <div class="blob w-[30vw] h-[30vw] bottom-[10%] right-[-10%]"
+            style="--blob-color: rgba(90, 215, 255, 0.5);"></div>
 
         <!-- Header -->
         <header class="mb-16 animate-up text-center md:text-left">
@@ -292,61 +123,7 @@
 
     </main>
 
-    <script>
-        // --- CURSOR & UI LOGIC (Reused) ---
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
-            gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.4 });
-        });
-
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                gsap.to(follower, { scale: 1.5, opacity: 0.1, duration: 0.3 });
-            });
-            el.addEventListener('mouseleave', () => {
-                gsap.to(follower, { scale: 1, opacity: 0.2, duration: 0.3 });
-            });
-        });
-
-        // Magnetic Buttons
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach((item) => {
-            item.addEventListener('mousemove', (e) => {
-                const { left, top, width, height } = item.getBoundingClientRect();
-                const x = (e.clientX - left - width / 2) * 0.5;
-                const y = (e.clientY - top - height / 2) * 0.5;
-                gsap.to(item, { x: x, y: y, duration: 0.4, ease: 'power3.out' });
-            });
-            item.addEventListener('mouseleave', () => {
-                gsap.to(item, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.3)' });
-            });
-        });
-
-        // Page Reveal
-        function revealPage() {
-            gsap.to('#navbar', { opacity: 1, duration: 0.8 });
-            gsap.to('.animate-up', {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: 'power3.out'
-            });
-        }
-
-        window.addEventListener('load', () => {
-            revealPage();
-        });
-
-        // Theme Toggle
-        const themeBtn = document.getElementById('themeToggle');
-        themeBtn.onclick = () => {
-            document.body.classList.toggle('dark');
-        };
-    </script>
+    <script src="../scripts/site.js"></script>
 
 </body>
 
