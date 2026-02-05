@@ -31,21 +31,24 @@
         });
     };
 
-    const copyEmail = async (button) => {
-        const email = button.dataset.email;
-        if (!email) {
-            return;
-        }
+    const copyEmail = async (element) => {
+        // Support both button with data-email and direct usage
+        const email = element?.dataset?.email || EMAIL_ADDRESS;
 
+        const originalContent = element.innerHTML;
         const reset = () => {
-            button.classList.remove('copied-success');
+            element.classList.remove('copied-success');
+            element.innerHTML = originalContent;
         };
 
         const finalize = () => {
-            button.classList.add('copied-success');
-            window.clearTimeout(button.dataset.resetId);
+            element.classList.add('copied-success');
+            if (element.tagName === 'BUTTON' && (element.id === 'copy-email-btn' || element.classList.contains('copy-email'))) {
+                element.innerHTML = 'COPIED';
+            }
+            window.clearTimeout(element.dataset.resetId);
             const timeoutId = window.setTimeout(reset, COPY_RESET_DELAY);
-            button.dataset.resetId = String(timeoutId);
+            element.dataset.resetId = String(timeoutId);
         };
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -91,19 +94,14 @@
 
         navRoot.innerHTML = `
             <nav class="sidebar">
-                <a class="skip-to-content" href="#main-content">Skip to content</a>
                 <a href="${prefix}index.html" class="nav-brand">MUKTADIR SOMIO</a>
                 <div class="nav-links">
                     <a href="${prefix}index.html" data-path="index.html">Home</a>
                     <a href="${prefix}blog.html" data-path="blog.html">Writings</a>
-                    <a href="https://github.com/som1o" target="_blank" rel="noopener">Projects</a>
-                    <a href="mailto:${EMAIL_ADDRESS}">Contact</a>
+                    <a href="${prefix}projects.html" data-path="projects.html">Projects</a>
+                    <a href="https://github.com/som1o" target="_blank" rel="noopener">GitHub</a>
                 </div>
                 <div class="nav-footer">
-                    <button class="copy-email" type="button" data-copy-email data-email="${EMAIL_ADDRESS}">
-                        <span class="copy-label">Copy Email</span>
-                        <span class="copy-success">Copied</span>
-                    </button>
                     <span
                         style="writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.1; font-size: 0.6rem; letter-spacing: 0.3em;">2026</span>
                 </div>
@@ -219,4 +217,10 @@
         }
         initAnimations();
     });
+
+    // Expose copyEmail to global scope for static HTML onclick handlers
+    window.copyEmail = () => {
+        const btn = document.getElementById('copy-email-btn');
+        if (btn) copyEmail(btn);
+    };
 })();
