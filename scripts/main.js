@@ -1,7 +1,6 @@
 /* global gsap */
 (() => {
     const EMAIL_ADDRESS = 'somiomuktadir@gmail.com';
-    const X_URL = 'https://x.com/MukS0m'; // Updated X URL
     const GITHUB_URL = 'https://github.com/som1o';
     const COPY_RESET_DELAY = 1600;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
