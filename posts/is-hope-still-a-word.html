@@ -9,38 +9,28 @@
         content="A geopolitical and human-centric analysis of the Russo-Ukrainian War. Reflecting on the cost of conflict and the resilience of hope.">
     <meta name="keywords" content="Russo-Ukrainian War, Geopolitics, Conflict Analysis, International Relations, Hope">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
     <!-- Open Graph -->
     <meta property="og:title" content="The Russo-Ukrainian War | Archive">
     <meta property="og:description" content="Geopolitical analysis and reflection on the human spirit in times of war.">
     <meta property="og:type" content="article">
 
-    <link rel="stylesheet" href="../styles/redesign.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
     <div class="cursor" id="cursor"></div>
 
     <div class="app-container">
-        <!-- ETHEREAL SIDEBAR -->
-        <nav class="sidebar">
-            <a href="../index.html" class="nav-brand">MUKTADIR SOMIO</a>
-
-            <div class="nav-links">
-                <a href="../blog.html" aria-label="Blog">Writings</a>
-                <a href="https://github.com/som1o" target="_blank" aria-label="GitHub">Projects</a>
-                <a href="mailto:somiomuktadir@gmail.com" aria-label="Email">Contact</a>
-            </div>
-
-            <div class="nav-footer">
-                <span
-                    style="writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.1; font-size: 0.6rem; letter-spacing: 0.3em;">2025</span>
-            </div>
-        </nav>
+        <div id="nav-root"></div>
 
         <!-- MAIN CONTENT -->
-        <main>
+        <main id="main-content">
             <section class="grid-section" style="min-height: 50vh; align-items: center;">
                 <div class="section-label">THE LOG / MAY 2025</div>
                 <div class="section-content">
@@ -118,7 +108,7 @@
         </main>
     </div>
 
-    <script src="../scripts/redesign.js"></script>
+    <script defer src="../scripts/main.js"></script>
 </body>
 
 </html>

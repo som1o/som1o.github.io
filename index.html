@@ -11,6 +11,10 @@
     <meta name="keywords"
         content="Muktadir Somio, ISRT, Statistics, Data Science, Agentic Programming, Geopolitics, University of Dhaka, Portfolio">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://som1o.github.io/">
@@ -25,33 +29,19 @@
     <meta property="twitter:description"
         content="Exploring the foundations of basic statistics, agentic programming, and rigorous data exploration at ISRT, DU.">
 
-    <link rel="stylesheet" href="styles/redesign.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
     <div class="cursor" id="cursor"></div>
 
     <div class="app-container">
-        <!-- ETHEREAL SIDEBAR -->
-        <nav class="sidebar">
-            <a href="index.html" class="nav-brand">MUKTADIR SOMIO</a>
-
-            <div class="nav-links">
-                <a href="blog.html" aria-label="Blog">Writings</a>
-                <a href="https://github.com/som1o" target="_blank" aria-label="GitHub">Projects</a>
-                <a href="mailto:somiomuktadir@gmail.com" aria-label="Email">Contact</a>
-            </div>
-
-            <div class="nav-footer">
-                <span
-                    style="writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.1; font-size: 0.6rem; letter-spacing: 0.3em;">2026</span>
-            </div>
-        </nav>
+        <div id="nav-root"></div>
 
         <!-- MAIN CONTENT -->
-        <main>
+        <main id="main-content">
             <!-- HERO SECTION -->
             <section class="hero">
                 <h1 class="hero-title">
@@ -99,6 +89,24 @@
                 </div>
             </section>
 
+            <!-- PROJECTS SECTION -->
+            <section class="grid-section">
+                <div class="section-label">PROJECTS</div>
+                <div class="section-content">
+                    <div class="ethereal-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">PROJECT_CPP</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 1.25rem;">
+                            Technical Stack
+                        </p>
+                        <ul style="padding-left: 1.2rem; color: var(--fg-muted); display: grid; gap: 0.5rem;">
+                            <li>C++17</li>
+                            <li>STL Algorithms &amp; Data Structures</li>
+                            <li>Modular OOP Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <!-- FOOTER INFO -->
             <section class="grid-section" style="margin-top: 10rem;">
                 <div class="section-label">Dhaka, Bangladesh</div>
@@ -111,7 +119,7 @@
         </main>
     </div>
 
-    <script src="scripts/redesign.js"></script>
+    <script defer src="scripts/main.js"></script>
 </body>
 
 </html>
