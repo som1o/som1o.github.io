@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&family=DM+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=DM+Mono&display=swap');
 
 :root {
     --bg-main: #FFFFFF;
@@ -13,6 +13,7 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
+    --font-accent: 'Fraunces', serif;
     --font-mono: 'DM Mono', monospace;
     --transition-base: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     --shadow: 0 10px 30px rgba(0, 122, 255, 0.05)
@@ -58,8 +59,10 @@ h4 {
 }
 
 .bold {
+    font-family: var(--font-accent);
     font-weight: 700;
-    color: var(--accent)
+    color: var(--accent);
+    font-style: italic;
 }
 
 .font-serif {
