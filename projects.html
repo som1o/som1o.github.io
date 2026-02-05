@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Muktadir Somio</title>
+    <meta name="description"
+        content="Showcase of projects by Muktadir Somio, ranging from statistics and data science to C++ developments.">
+    <meta name="keywords" content="Muktadir Somio Projects, Statistics, Data Science, C++, Earthquake Analysis">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Projects | Muktadir Somio">
+    <meta property="og:description" content="A collection of my work in data science and software development.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="loading-line"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <div class="app-container">
+        <!-- ETHEREAL SIDEBAR -->
+        <nav class="sidebar">
+            <a href="index.html" class="nav-brand">MUKTADIR SOMIO</a>
+
+            <div class="nav-links">
+                <a href="blog.html" aria-label="Blog">Writings</a>
+                <a href="projects.html" class="active" aria-label="Projects"
+                    style="opacity: 1; color: var(--accent);">Projects</a>
+                <a href="https://github.com/som1o" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="mailto:somiomuktadir@gmail.com" aria-label="Email">Contact</a>
+            </div>
+
+            <div class="nav-footer">
+                <span
+                    style="writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.1; font-size: 0.6rem; letter-spacing: 0.3em;">2026</span>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <section class="grid-section" style="min-height: 40vh; align-items: center;">
+                <div class="section-content">
+                    <h1 class="hero-title" style="font-size: clamp(3rem, 10vw, 8rem);">BUILD & <span
+                            class="bold">EXPLORE</span></h1>
+                </div>
+            </section>
+
+            <!-- PROJECTS GRID -->
+            <section class="grid-section">
+                <div class="section-label">SELECTED WORKS</div>
+                <div class="section-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+
+                    <!-- PROJECT 1 -->
+                    <div class="ethereal-card"
+                        style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span
+                                style="font-size: 0.7rem; color: var(--accent); font-weight: 700; letter-spacing: 0.1em;">Website</span>
+                            <h3 style="font-size: 1.8rem; margin: 1rem 0;">som1o.github.io</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 2rem;">
+                                Source code of this very website. A minimal, ethereal portfolio built to showcase my academic journey,
+                                personal thoughts, writings, and technical projects.
+                            </p>
+                        </div>
+                        <a href="https://github.com/som1o/som1o.github.io" target="_blank"
+                            style="text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem;">VIEW
+                            ON GITHUB →</a>
+                    </div>
+
+                    <!-- PROJECT 2 -->
+                    <div class="ethereal-card"
+                        style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span
+                                style="font-size: 0.7rem; color: var(--accent); font-weight: 700; letter-spacing: 0.1em;">Group Project</span>
+                            <h3 style="font-size: 1.8rem; margin: 1rem 0;">project_cpp</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 2rem;">
+                                Analyzing earthquake data and estimating likelihood. A dive into statistical analysis
+                                using C++ frameworks.
+                            </p>
+                        </div>
+                        <a href="https://github.com/som1o/project_cpp" target="_blank"
+                            style="text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem;">VIEW
+                            ON GITHUB →</a>
+                    </div>
+
+                    <!-- PROJECT 3 -->
+                    <div class="ethereal-card"
+                        style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span
+                                style="font-size: 0.7rem; color: var(--accent); font-weight: 700; letter-spacing: 0.1em;">Academic Codebase</span>
+                            <h3 style="font-size: 1.8rem; margin: 1rem 0;">codes</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 2rem;">
+                                A collection of codes necessary for review, practice, and lab use. Documentation of the
+                                learning process in computer science.
+                            </p>
+                        </div>
+                        <a href="https://github.com/som1o/codes" target="_blank"
+                            style="text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem;">VIEW
+                            ON GITHUB →</a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- FOOTER INFO -->
+            <section class="grid-section" style="margin-top: 10rem;">
+                <div class="section-label">Dhaka, Bangladesh</div>
+                <div class="section-content"
+                    style="display: flex; gap: 4rem; opacity: 0.4; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">
+                    <span>SOMIOMUKTADIR@GMAIL.COM</span>
+                    <span>GITHUB.COM/SOM1O</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

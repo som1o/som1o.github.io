@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&family=DM+Mono&display=swap');
 
 :root {
     --bg-main: #FFFFFF;
@@ -8,16 +8,20 @@
     --accent: #007AFF;
     --border: rgba(0, 0, 0, 0.05);
     --glass: rgba(255, 255, 255, 0.7);
+    --glass-strong: rgba(255, 255, 255, 0.9);
     --grid-gap: 3rem;
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-mono: 'DM Mono', monospace;
     --transition-base: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow: 0 10px 30px rgba(0, 122, 255, 0.05)
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 body {
@@ -27,10 +31,9 @@ body {
     line-height: 1.5;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
+    min-height: 100vh
 }
 
-/* DOT BACKGROUND */
 body::before {
     content: '';
     position: fixed;
@@ -42,26 +45,41 @@ body::before {
     background-size: 30px 30px;
     opacity: 0.15;
     pointer-events: none;
-    z-index: -1;
+    z-index: -1
 }
 
-/* TYPOGRAPHY */
 h1,
 h2,
 h3,
 h4 {
     font-family: var(--font-heading);
     font-weight: 500;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.03em
 }
 
-/* LAYOUT */
+.bold {
+    font-weight: 700;
+    color: var(--accent)
+}
+
+.font-serif {
+    font-family: var(--font-serif)
+}
+
+.font-mono {
+    font-family: var(--font-mono)
+}
+
 .app-container {
     display: flex;
-    min-height: 100vh;
+    min-height: 100vh
 }
 
-/* ETHEREAL SIDEBAR */
+main {
+    flex: 1;
+    padding: 2rem 5vw
+}
+
 nav.sidebar {
     width: 100px;
     height: 90vh;
@@ -78,22 +96,7 @@ nav.sidebar {
     padding: 3rem 0;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 10px 30px rgba(0, 122, 255, 0.05);
-}
-
-@media (max-width: 1024px) {
-    .app-container {
-        flex-direction: column;
-    }
-
-    nav.sidebar {
-        width: calc(100% - 2rem);
-        height: 70px;
-        flex-direction: row;
-        top: 1rem;
-        margin: 0 1rem;
-        padding: 0 2rem;
-    }
+    box-shadow: var(--shadow)
 }
 
 .nav-brand {
@@ -104,27 +107,13 @@ nav.sidebar {
     transform: rotate(180deg);
     text-decoration: none;
     color: var(--accent);
-    letter-spacing: 0.2em;
-}
-
-@media (max-width: 1024px) {
-    .nav-brand {
-        writing-mode: horizontal-tb;
-        transform: none;
-    }
+    letter-spacing: 0.2em
 }
 
 .nav-links {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-}
-
-@media (max-width: 1024px) {
-    .nav-links {
-        flex-direction: row;
-        gap: 1.5rem;
-    }
+    gap: 2.5rem
 }
 
 .nav-links a {
@@ -133,27 +122,20 @@ nav.sidebar {
     opacity: 0.4;
     font-size: 0.8rem;
     font-weight: 600;
-    transition: var(--transition-base);
+    transition: var(--transition-base)
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     opacity: 1;
-    transform: translateX(3px);
-    color: var(--accent);
+    color: var(--accent)
 }
 
-/* MAIN CONTENT */
-main {
-    flex: 1;
-    padding: 2rem 5vw;
-}
-
-/* GRID SECTIONS */
 .grid-section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     margin-bottom: 6rem;
-    position: relative;
+    position: relative
 }
 
 .section-label {
@@ -162,61 +144,45 @@ main {
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.2em;
-    padding-top: 1rem;
+    padding-top: 1rem
 }
 
 .section-content {
-    grid-column: span 9;
+    grid-column: span 9
 }
 
-@media (max-width: 768px) {
-
-    .section-label,
-    .section-content {
-        grid-column: span 12;
-    }
-}
-
-/* HERO */
 .hero {
     height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center
 }
 
 .hero-title {
     font-size: clamp(3rem, 12vw, 10rem);
     font-weight: 200;
-    line-height: 0.9;
-    color: var(--fg-main);
-}
-
-.hero-title span.bold {
-    font-weight: 700;
-    color: var(--accent);
+    line-height: 0.9
 }
 
 .hero-meta {
     margin-top: 4rem;
     max-width: 500px;
     font-size: 1.2rem;
-    color: var(--fg-muted);
+    color: var(--fg-muted)
 }
 
-/* CARDS & ELEMENTS */
 .ethereal-card {
     background: var(--glass);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 3rem;
-    transition: var(--transition-base);
+    transition: var(--transition-base)
 }
 
 .ethereal-card:hover {
     box-shadow: 0 20px 40px rgba(0, 122, 255, 0.08);
-    transform: translateY(-5px);
+    transform: translateY(-5px)
 }
 
 .cursor {
@@ -228,5 +194,74 @@ main {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    transition: width 0.3s, height 0.3s;
+    transition: width 0.3s, height 0.3s
+}
+
+#loading-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 10001;
+    width: 0;
+    opacity: 0
+}
+
+.animate-up {
+    opacity: 0;
+    transform: translateY(30px)
+}
+
+@media (max-width:1024px) {
+    .app-container {
+        flex-direction: column
+    }
+
+    nav.sidebar {
+        width: calc(100% - 2rem);
+        height: 70px;
+        flex-direction: row;
+        top: 1rem;
+        margin: 0 1rem;
+        padding: 0 2rem
+    }
+
+    .nav-brand {
+        writing-mode: horizontal-tb;
+        transform: none
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 1.5rem
+    }
+}
+
+@media (max-width:768px) {
+
+    .section-label,
+    .section-content {
+        grid-column: span 12
+    }
+
+    .hero {
+        height: auto;
+        padding: 10rem 0 5rem
+    }
+
+    .hero-title {
+        font-size: 4rem
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important
+    }
+
+    .cursor {
+        display: none
+    }
 }
