@@ -1,124 +1,125 @@
 <!DOCTYPE html>
-<html lang="en" class="antialiased">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My First MUN Experience | Muktadir Somio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First MUN Experience | Archive - Muktadir</title>
+    <meta name="description"
+        content="A detailed reflection on my first Model United Nations experience at the DU Diplomatic Conclave 2026, representing Nigeria in UNHRC.">
+    <meta name="keywords"
+        content="Model United Nations, MUN, DU Diplomatic Conclave, Nigeria UNHRC, Diplomacy, Public Speaking">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Open Graph -->
+    <meta property="og:title" content="My First MUN Experience | Archive">
+    <meta property="og:description" content="Reflecting on diplomacy, chaos, and caffeine at my first MUN.">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="../styles/redesign.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../styles/site.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
-<body class="dark selection:bg-white selection:text-black" data-page="post">
+<body>
+    <div class="cursor" id="cursor"></div>
 
-    <!-- CURSOR -->
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
+    <div class="app-container">
+        <!-- ETHEREAL SIDEBAR -->
+        <nav class="sidebar">
+            <a href="../index.html" class="nav-brand">MUKTADIR SOMIO</a>
 
+            <div class="nav-links">
+                <a href="../blog.html" aria-label="Blog">Writings</a>
+                <a href="https://github.com/som1o" target="_blank" aria-label="GitHub">Projects</a>
+                <a href="mailto:somiomuktadir@gmail.com" aria-label="Email">Contact</a>
+            </div>
 
+            <div class="nav-footer">
+                <span
+                    style="writing-mode: vertical-rl; transform: rotate(180deg); opacity: 0.1; font-size: 0.6rem; letter-spacing: 0.3em;">2026</span>
+            </div>
+        </nav>
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 opacity-0" id="navbar">
-        <!-- LOGO -->
-        <a href="../index.html"
-            class="nav-item nav-logo font-display font-extrabold tracking-widest text-xl md:text-2xl group">
-            MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
-        </a>
+        <!-- MAIN CONTENT -->
+        <main>
+            <section class="grid-section" style="min-height: 50vh; align-items: center;">
+                <div class="section-label">THE LOG / JAN 2026</div>
+                <div class="section-content">
+                    <h1 class="hero-title" style="font-size: clamp(2.5rem, 8vw, 6rem);">MY FIRST <span
+                            class="bold">MUN</span> EXPERIENCE</h1>
+                </div>
+            </section>
 
-        <!-- ACTIONS -->
-        <div class="flex gap-4 md:gap-6 items-center">
-            <!-- Back to Blog -->
-            <a href="../blog.html" class="nav-item group" aria-label="Back to Blog">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" class="rotate-180">
-                    <path d="m13 17 5-5-5-5"></path>
-                    <path d="M6 12h12"></path>
-                </svg>
-            </a>
+            <section class="grid-section">
+                <div class="section-label">REFLECTION</div>
+                <div class="section-content">
+                    <div class="ethereal-card"
+                        style="font-size: 1.1rem; max-width: 800px; line-height: 1.8; color: var(--fg-muted);">
+                        <p>
+                            So, I finally did it. I walked into a room full of people in suits, all pretending to be
+                            diplomats of
+                            countries they’ve probably never visited, ready to travel through the web of Digital
+                            Governance and State Sovereignty for two days. Yes, my first Model
+                            United Nations (MUN) at DU Diplomatic Conclave 2026 by DUMUNA where I represented Nigeria in
+                            UNHRC.
+                        </p>
 
-            <!-- Theme Toggle -->
-            <button id="themeToggle" class="nav-item group" aria-label="Toggle theme">
-                <svg class="hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-                <svg class="block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-            </button>
-        </div>
-    </nav>
+                        <p style="margin-top: 2rem;">
+                            Honestly, I was mentally prepared but inexperienced. The placards, the formal language ("The
+                            delegate of Nigeria wishes to
+                            yield..."), the sheer intensity of it all. It felt like stepping onto a stage without a
+                            script. But
+                            then, the debate started.
+                        </p>
 
-    <!-- MAIN CONTENT -->
-    <main class="min-h-screen relative pt-32 pb-20 px-6 md:px-12 max-w-4xl mx-auto z-10">
-        <div class="blob w-[60vw] h-[60vw] top-[-20%] left-[-20%]"
-            style="--blob-color: rgba(255, 139, 215, 0.55);"></div>
-        <div class="blob w-[30vw] h-[30vw] bottom-[10%] right-[-10%]"
-            style="--blob-color: rgba(90, 215, 255, 0.5);"></div>
+                        <h2 style="font-size: 1.5rem; margin: 3rem 0 1rem 0; color: var(--fg-main); font-weight: 600;">
+                            CHAOS AND COFFEE</h2>
 
-        <!-- Header -->
-        <header class="mb-16 animate-up text-center md:text-left">
-            <div class="font-mono text-sm opacity-50 mb-6 tracking-widest uppercase">January 28, 2026</div>
-            <h1 class="text-4xl md:text-7xl font-display font-bold leading-tight mb-8">
-                My First MUN Experience
-            </h1>
-        </header>
+                        <p>
+                            The first day was a blur of speeches and moderated caucuses (which is basically just fancy
+                            organized
+                            chaos). I remember frantically scribbling notes, trying to form an alliance with the
+                            delegate of China
+                            while avoiding the glare of the delegate of US. We were discussing the issue of the digital
+                            divide, state sovereignty, and the right to privacy in the digital age.
+                        </p>
 
-        <!-- Article Body -->
-        <article class="text-lg md:text-xl font-light leading-relaxed opacity-90 animate-up"
-            style="animation-delay: 0.1s;">
-            <p>
-                So, I finally did it. I walked into a room full of people in suits, all pretending to be diplomats of
-                countries they’ve probably never visited, ready to travel through the web of Digital Governance and State Sovereignty for two days. Yes, my first Model
-                United Nations (MUN) at DU Diplomatic Conclave 2026 by DUMUNA where I represented Nigeria in UNHRC.
-            </p>
+                        <p style="margin-top: 2rem;">
+                            But here's the thing: somewhere between the drafting of the committee paper and the 2 PM
+                            ad-hoc committee updates, I
+                            realized that this wasn't just roleplay. It was a crash course in ready wit and quick
+                            thinking. You have to step out of your
+                            own shoes and argue for a perspective that might be completely alien to you.
+                        </p>
 
-            <p>
-                Honestly, I was mentally prepared but inexperienced. The placards, the formal language ("The delegate of Nigeria wishes to
-                yield..."), the sheer intensity of it all. It felt like stepping onto a stage without a script. But
-                then, the debate started.
-            </p>
+                        <p style="margin-top: 2rem;">
+                            I didn't win Best Delegate, but won a special mention award. And I walked out of that
+                            conference with a newfound respect for the complexity of the world and a little more
+                            confidence in my own
+                            voice. And really, isn't that the point?
+                        </p>
 
-            <h2>Chaos and Coffee</h2>
+                        <div
+                            style="margin-top: 4rem; opacity: 0.4; font-weight: 700; letter-spacing: 0.1em; color: var(--accent);">
+                            — MUKTADIR
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <p>
-                The first day was a blur of speeches and moderated caucuses (which is basically just fancy organized
-                chaos). I remember frantically scribbling notes, trying to form an alliance with the delegate of China
-                while avoiding the glare of the delegate of US. We were discussing the issue of the digital divide, state sovereignty, and the right to privacy in the digital age.
-            </p>
+            <!-- FOOTER INFO -->
+            <section class="grid-section" style="margin-top: 10rem;">
+                <div class="section-label">Dhaka, Bangladesh</div>
+                <div class="section-content"
+                    style="display: flex; gap: 4rem; opacity: 0.4; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">
+                    <span>SOMIOMUKTADIR@GMAIL.COM</span>
+                    <span>GITHUB.COM/SOM1O</span>
+                </div>
+            </section>
+        </main>
+    </div>
 
-            <p>
-                But here's the thing: somewhere between the drafting of the committee paper and the 2 PM ad-hoc committee updates, I
-                realized that this wasn't just roleplay. It was a crash course in ready wit and quick thinking. You have to step out of your
-                own shoes and argue for a perspective that might be completely alien to you.
-            </p>
-
-            <p>
-                I didn't win Best Delegate, but won a special mention award. And I walked out of that conference with a newfound respect for the complexity of the world and a little more confidence in my own
-                voice. And really, isn't that the point?
-            </p>
-
-            <hr class="my-12 border-current opacity-20">
-
-            <p class="font-mono text-sm opacity-50">
-                — Muktadir
-            </p>
-        </article>
-
-    </main>
-
-    <script src="../scripts/site.js"></script>
-
+    <script src="../scripts/redesign.js"></script>
 </body>
 
 </html>
