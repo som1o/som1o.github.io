@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Designing Quiet Interfaces | Muktadir Somio</title>
+    <meta name="description" content="A reflection on designing quiet, human interfaces by Muktadir Somio." />
+    <meta name="keywords" content="design, interfaces, UX, Muktadir Somio" />
+    <meta name="author" content="Muktadir Somio" />
+    <link rel="canonical" href="https://som1o.github.io/posts/quiet-interfaces.html" />
+    <meta property="og:title" content="Designing Quiet Interfaces" />
+    <meta property="og:description" content="A reflection on designing quiet, human interfaces by Muktadir Somio." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://som1o.github.io/posts/quiet-interfaces.html" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/site.css">
+</head>
+
+<body class="selection:bg-white selection:text-black" data-page="post">
+
+    <!-- CURSOR -->
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-shell">
+            <!-- LOGO -->
+            <a href="../index.html" class="nav-item nav-logo font-display group">
+                MS<span class="text-gray-400 group-hover:text-current transition-colors duration-300">/</span>05
+            </a>
+
+            <!-- ACTIONS -->
+            <div class="nav-actions flex gap-4 md:gap-6 items-center">
+                <!-- Back to Blog -->
+                <a href="../blog.html" class="nav-item group" aria-label="Back to Blog">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" class="rotate-180">
+                        <path d="m13 17 5-5-5-5"></path>
+                        <path d="M6 12h12"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu"
+                aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="container nav-menu" id="mobileMenu">
+            <a href="../index.html">Home</a>
+            <a href="../blog.html">Blog</a>
+            <a href="https://github.com/som1o" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:somiomuktadir@gmail.com">Email</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="page-shell">
+        <section class="section-pad relative">
+            <div class="blob w-[60vw] h-[60vw] top-[-20%] left-[-20%]" style="--blob-color: var(--color-5);"></div>
+            <div class="blob w-[30vw] h-[30vw] bottom-[10%] right-[-10%]" style="--blob-color: var(--color-2);"></div>
+
+            <div class="container">
+                <!-- Header -->
+                <header class="mb-12 animate-up text-center md:text-left">
+                    <div class="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--ink-muted)] mb-6">March 5, 2026</div>
+                    <h1 class="text-4xl md:text-6xl font-display font-semibold leading-tight mb-6">
+                        Designing Quiet Interfaces
+                    </h1>
+                </header>
+
+                <!-- Article Body -->
+                <article class="text-lg md:text-xl font-light leading-relaxed opacity-90 animate-up"
+                    style="animation-delay: 0.1s;">
+                    <p>
+                        Loud interfaces ask for your attention. Quiet ones earn it. I have been chasing that feeling
+                        lately — the moment you open a page that breathes instead of shouts. It feels like the work is
+                        listening back, and that makes me slow down.
+                    </p>
+
+                    <p>
+                        For me, quiet design starts with rhythm. Large typography, generous margins, and soft motion
+                        cues let your eyes move on their own. A little translucency or glow makes the interface feel
+                        human — like a desk lamp in a quiet room, not a spotlight on a stage.
+                    </p>
+
+                    <h2>Small Signals, Clear Intent</h2>
+
+                    <p>
+                        A glow around a button, a glassy card, a spinner that feels handcrafted — these are tiny
+                        signals that build trust. They tell visitors: this space was made with care. It is a kind of
+                        hospitality, and it matters more to me than I expected.
+                    </p>
+
+                    <blockquote>
+                        “Design is not just what it looks like and feels like. Design is how it works.” — Steve Jobs
+                    </blockquote>
+
+                    <p>
+                        I return to that quote whenever I am tempted to over-style things. When the interface is quiet,
+                        the message becomes loud. The content becomes the hero. That is the standard I want to keep
+                        refining.
+                    </p>
+
+                    <hr class="my-12 border-current opacity-20">
+
+                    <p class="font-mono text-sm opacity-50">
+                        — Muktadir
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="../scripts/site.js"></script>
+
+</body>
+
+</html>
