@@ -92,10 +92,20 @@
             <section class="grid-section">
                 <div class="section-label">EXPLORATION</div>
                 <div class="section-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                    <div class="ethereal-card" style="padding: 2rem;">
-                        <h3 style="margin-bottom: 1rem;">STATISTICS</h3>
-                        <p style="font-size: 0.9rem; opacity: 0.7;">Decrypting complex datasets to find the invisible
-                            narrative.</p>
+                    <div class="ethereal-card"
+                        style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3 style="margin-bottom: 1rem;">STATISTICS</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.7;">Decrypting complex datasets to find the
+                                invisible narrative.</p>
+                        </div>
+                        <div class="sparkline-container" style="margin-top: 1.5rem; height: 40px;">
+                            <svg viewBox="0 0 100 40" class="sparkline">
+                                <path d="M0 35 L10 32 L20 38 L30 25 L40 28 L50 15 L60 22 L70 10 L80 18 L90 5 L100 12"
+                                    fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="sparkline-path" />
+                            </svg>
+                        </div>
                     </div>
                     <div class="ethereal-card" style="padding: 2rem;">
                         <h3 style="margin-bottom: 1rem;">GEOPOLITICS</h3>
@@ -109,8 +119,12 @@
             <section class="grid-section" style="margin-top: 10rem;">
                 <div class="section-label">Dhaka, Bangladesh</div>
                 <div class="section-content"
-                    style="display: flex; gap: 4rem; opacity: 0.4; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">
-                    <span>SOMIOMUKTADIR@GMAIL.COM</span>
+                    style="display: flex; gap: 4rem; align-items: center; opacity: 0.4; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span>SOMIOMUKTADIR@GMAIL.COM</span>
+                        <button id="copy-email-btn" onclick="copyEmail()"
+                            style="background: none; border: 1px solid currentColor; color: inherit; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.6rem; letter-spacing: 0.1em; transition: all 0.3s ease;">COPY</button>
+                    </div>
                     <span>GITHUB.COM/SOM1O</span>
                 </div>
             </section>
