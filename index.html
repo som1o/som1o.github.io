@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    <div id="loading-line"></div>
     <div class="cursor" id="cursor"></div>
 
     <div class="app-container">
@@ -50,7 +51,7 @@
                 </h1>
 
                 <div class="hero-meta">
-                    Currently a fresher at <span style="color: var(--accent); font-weight: 600;">
+                    Currently a fresher at <span class="bold">
                         ISRT, University of Dhaka</span>.
                     Exploring the foundations of basic statistics, agentic programming, and rigorous data exploration.
                 </div>
@@ -62,7 +63,7 @@
                 <div class="section-content">
                     <div class="ethereal-card">
                         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Learning to <span
-                                style="color: var(--accent);">Analyze</span></h2>
+                                class="bold">Analyze</span></h2>
                         <p style="color: var(--fg-muted); font-size: 1.1rem; max-width: 600px;">
                             My academic lifecycle has begun. I'm currently diving into the core principles of
                             statistical theory and mastering the art of agentic programming to solve real-world problems
@@ -76,10 +77,13 @@
             <section class="grid-section">
                 <div class="section-label">EXPLORATION</div>
                 <div class="section-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                    <div class="ethereal-card" style="padding: 2rem;">
-                        <h3 style="margin-bottom: 1rem;">STATISTICS</h3>
-                        <p style="font-size: 0.9rem; opacity: 0.7;">Decrypting complex datasets to find the invisible
-                            narrative.</p>
+                    <div class="ethereal-card"
+                        style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3 style="margin-bottom: 1rem;">STATISTICS</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.7;">Decrypting complex datasets to find the
+                                invisible narrative.</p>
+                        </div>
                     </div>
                     <div class="ethereal-card" style="padding: 2rem;">
                         <h3 style="margin-bottom: 1rem;">GEOPOLITICS</h3>
@@ -111,8 +115,12 @@
             <section class="grid-section" style="margin-top: 10rem;">
                 <div class="section-label">Dhaka, Bangladesh</div>
                 <div class="section-content"
-                    style="display: flex; gap: 4rem; opacity: 0.4; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">
-                    <span>SOMIOMUKTADIR@GMAIL.COM</span>
+                    style="display: flex; gap: 4rem; align-items: center; opacity: 0.4; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span>SOMIOMUKTADIR@GMAIL.COM</span>
+                        <button id="copy-email-btn" onclick="copyEmail()"
+                            style="background: none; border: 1px solid currentColor; color: inherit; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.6rem; letter-spacing: 0.1em; transition: all 0.3s ease;">COPY</button>
+                    </div>
                     <span>GITHUB.COM/SOM1O</span>
                 </div>
             </section>
