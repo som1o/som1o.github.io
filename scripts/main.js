@@ -6,7 +6,7 @@
     const CONFIG = {
         email: 'somiomuktadir@gmail.com',
         github: 'https://github.com/som1o',
-        twitter: 'https://twitter.com/som1o',
+        twitter: 'https://twitter.com/MukS0m',
         copyDelay: 2000
     };
 
