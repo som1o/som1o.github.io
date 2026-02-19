@@ -15,8 +15,8 @@
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="styles/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
@@ -27,66 +27,64 @@
         <div id="nav-root"></div>
 
         <!-- MAIN CONTENT -->
-        <main>
-            <section class="grid-section" style="min-height: 40vh; align-items: center;">
-                <div class="section-content">
-                    <h1 class="hero-title">BUILD & <span class="bold">EXPLORE</span></h1>
-                </div>
+        <main id="main-content">
+
+            <!-- HERO -->
+            <section class="hero section" style="min-height: 45vh;">
+                <h1 class="hero-title">Build &amp; <span class="text-accent">Explore</span></h1>
             </section>
 
             <!-- PROJECTS GRID -->
-            <section class="grid-section">
-                <div class="section-label">SELECTED WORKS</div>
-                <div class="section-content projects-grid">
+            <section class="section">
+                <div class="section-label">Selected Works</div>
+                <div class="projects-grid">
 
                     <!-- PROJECT 1 -->
-                    <div class="ethereal-card project-card">
+                    <div class="glass-card project-card">
                         <div>
-                            <span class="project-tag">Website</span>
-                            <h2 style="font-size: 1.8rem; margin: 1rem 0;">som1o.github.io</h2>
-                            <p style="color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                                Source code of this website. A minimal, ethereal portfolio built to showcase my
-                                academic journey, thoughts, and technical projects.
+                            <span class="tag tag-project">Website</span>
+                            <h2>som1o.github.io</h2>
+                            <p>
+                                Source code of this website. A glassmorphic portfolio built to showcase my
+                                academic journey, thoughts, and technical projects with an emphasis on immersive design.
                             </p>
                             <ul class="tech-list">
-                                <li>HTML5 & Semantic SEO</li>
+                                <li>HTML5 &amp; Semantic SEO</li>
                                 <li>Vanilla CSS3 (Custom Properties)</li>
-                                <li>JavaScript (GSAP & ScrollTrigger)</li>
+                                <li>JavaScript (GSAP &amp; ScrollTrigger)</li>
                             </ul>
                         </div>
-                        <a href="https://github.com/som1o/som1o.github.io" target="_blank"
-                            style="text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem;">VIEW
-                            ON GITHUB →</a>
+                        <a href="https://github.com/som1o/som1o.github.io" target="_blank" rel="noopener noreferrer"
+                            class="project-link">VIEW ON GITHUB →</a>
                     </div>
 
                     <!-- PROJECT 2 -->
-                    <div class="ethereal-card project-card">
+                    <div class="glass-card project-card">
                         <div>
-                            <span class="project-tag">Group Project</span>
-                            <h2 style="font-size: 1.8rem; margin: 1rem 0;">project_cpp</h2>
-                            <p style="color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                            <span class="tag tag-statistics">Group Project</span>
+                            <h2>project_cpp</h2>
+                            <p>
                                 Analyzing earthquake data and estimating likelihood. A dive into statistical analysis
-                                using C++ frameworks.
+                                using C++ frameworks with modular architecture.
                             </p>
                             <ul class="tech-list">
                                 <li>C++17</li>
-                                <li>STL Algorithms & Data Structures</li>
+                                <li>STL Algorithms &amp; Data Structures</li>
                                 <li>Modular OOP Design</li>
                             </ul>
                         </div>
-                        <a href="https://github.com/som1o/project_cpp" target="_blank"
-                            style="text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem;">VIEW
-                            ON GITHUB →</a>
+                        <a href="https://github.com/som1o/project_cpp" target="_blank" rel="noopener noreferrer"
+                            class="project-link">VIEW ON GITHUB →</a>
                     </div>
 
                     <!-- PROJECT 3 -->
-                    <div class="ethereal-card project-card">
+                    <div class="glass-card project-card">
                         <div>
-                            <span class="project-tag">Academic Codebase</span>
-                            <h2 style="font-size: 1.8rem; margin: 1rem 0;">codes</h2>
-                            <p style="color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                            <span class="tag tag-programming">Academic Codebase</span>
+                            <h2>codes</h2>
+                            <p>
                                 A collection of codes necessary for review, practice, and lab use. Documentation of the
-                                learning process in computer science.
+                                learning process in computer science fundamentals.
                             </p>
                             <ul class="tech-list">
                                 <li>C / C++</li>
@@ -94,30 +92,29 @@
                                 <li>Algorithm Implementation</li>
                             </ul>
                         </div>
-                        <a href="https://github.com/som1o/codes" target="_blank"
-                            style="text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem;">VIEW
-                            ON GITHUB →</a>
+                        <a href="https://github.com/som1o/codes" target="_blank" rel="noopener noreferrer"
+                            class="project-link">VIEW ON GITHUB →</a>
                     </div>
 
                 </div>
             </section>
 
-            <!-- FOOTER INFO -->
-            <section class="grid-section" style="margin-top: 10rem;">
-                <div class="section-label">Dhaka, Bangladesh</div>
-                <div class="section-content footer-content">
-                    <div style="display: flex; align-items: center; gap: 1rem;">
-                        <span>SOMIOMUKTADIR@GMAIL.COM</span>
-                        <button id="copy-email-btn" onclick="copyEmail()" aria-label="Copy email address"
-                            style="background: none; border: 1px solid currentColor; color: inherit; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.6rem; letter-spacing: 0.1em; transition: all 0.3s ease;">COPY</button>
+            <!-- FOOTER -->
+            <footer class="site-footer section">
+                <div class="footer-inner">
+                    <div class="footer-email">
+                        <span>somiomuktadir@gmail.com</span>
+                        <button class="copy-btn" onclick="copyEmail(event)" aria-label="Copy email address">COPY
+                        </button>
                     </div>
-                    <span>GITHUB.COM/SOM1O</span>
+                    <a href="https://github.com/som1o" target="_blank" rel="noopener noreferrer"
+                        class="footer-github">github.com/som1o</a>
                 </div>
-            </section>
+            </footer>
         </main>
     </div>
 
-    <script src="scripts/main.js"></script>
+    <script defer src="scripts/main.js"></script>
 </body>
 
 </html>

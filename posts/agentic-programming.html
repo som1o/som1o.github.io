@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rise of Agentic Programming | Archive — Muktadir</title>
+    <meta name="description"
+        content="An exploration of agentic programming: how AI agents are transforming software development, the paradigm shift from tools to teammates, and implications for data science workflows.">
+    <meta name="keywords"
+        content="Agentic Programming, AI Agents, LLM, Software Development, Data Science, Muktadir Somio">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Rise of Agentic Programming | Archive">
+    <meta property="og:description"
+        content="How AI agents are transforming software development and what it means for statistics and data science.">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="loading-line"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <div class="app-container">
+        <div id="nav-root"></div>
+
+        <main id="main-content">
+            <!-- BACK LINK -->
+            <div class="back-link-container">
+                <a href="../blog.html" class="back-link" aria-label="Back to Writings">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="currentColor" />
+                    </svg>
+                    Back to Writings
+                </a>
+            </div>
+
+            <!-- POST HEADER -->
+            <section class="section"
+                style="min-height: 40vh; display: flex; flex-direction: column; justify-content: center;">
+                <div class="section-label">The Log / Feb 2026</div>
+                <h1 class="hero-title">The Rise of <span class="text-accent">Agentic</span> Programming</h1>
+                <div style="margin-top: 1rem;">
+                    <span class="tag tag-programming">Programming</span>
+                </div>
+            </section>
+
+            <!-- POST CONTENT -->
+            <section class="section">
+                <div class="section-label">Essay</div>
+                <div class="glass-card post-content">
+                    <p>
+                        Something fundamental has shifted in the way we write software. It began quietly — autocomplete
+                        suggestions that seemed eerily prescient, code generation that went from party trick to
+                        production tool, and then, almost overnight, the emergence of AI systems that don't just assist
+                        programmers but act as programmers themselves. Welcome to the age of agentic programming.
+                    </p>
+
+                    <h2>From Autocomplete to Autonomy</h2>
+
+                    <p>
+                        The trajectory of AI in programming follows a familiar curve of technological adoption, but the
+                        speed has been vertiginous. Just a few years ago, GitHub Copilot felt revolutionary — a system
+                        that could predict the next line of code based on context. It was, fundamentally, a very
+                        sophisticated autocomplete. Useful, sometimes magical, but still firmly a tool operated by a
+                        human hand.
+                    </p>
+
+                    <p>
+                        Then came the large language models — GPT-4, Claude, Gemini — with their ability to reason
+                        across entire codebases, understand intent from natural language descriptions, and generate not
+                        just code snippets but complete architectural solutions. The shift wasn't incremental; it was
+                        categorical. We went from "AI helps you type faster" to "AI understands what you're trying to
+                        build and proposes how to build it."
+                    </p>
+
+                    <p>
+                        But the truly revolutionary step is the one happening right now: the move from AI as a reactive
+                        tool to AI as a proactive agent. An agentic system doesn't wait for you to ask a question. It
+                        reads your codebase, identifies problems, proposes solutions, executes them, tests them, and
+                        iterates. It has a goal, a context window that spans your entire project, and the autonomy to
+                        take action. This is not autocomplete. This is a colleague.
+                    </p>
+
+                    <h2>What Makes an Agent an Agent?</h2>
+
+                    <p>
+                        The word "agent" carries specific weight in both computer science and philosophy. In the AI
+                        context, an agent is a system that perceives its environment, makes decisions based on those
+                        perceptions, and takes actions to achieve specified goals. The three critical ingredients are:
+                        perception (understanding the codebase and the developer's intent), reasoning (planning a
+                        sequence of steps to achieve the goal), and action (actually writing, modifying, and testing
+                        code).
+                    </p>
+
+                    <p>
+                        What distinguishes modern agentic programming systems from their predecessors is the integration
+                        of these three capabilities into a continuous loop. The agent reads a file, understands its
+                        context within the larger project, identifies what needs to change, makes the change, verifies
+                        it works, and moves on to the next task. If it encounters an error, it doesn't crash or return
+                        an error message — it reasons about the error and tries a different approach. The loop is tight,
+                        autonomous, and increasingly reliable.
+                    </p>
+
+                    <h2>The Implications for Statistics and Data Science</h2>
+
+                    <p>
+                        As a statistics student, I find this shift particularly fascinating because it mirrors something
+                        we already understand: the difference between descriptive and inferential analysis. Traditional
+                        coding tools were descriptive — they helped you express what you already knew. Agentic systems
+                        are inferential — they can extrapolate from incomplete information, make probabilistic judgments
+                        about what you might want, and act on those inferences.
+                    </p>
+
+                    <p>
+                        In practical terms, agentic programming is beginning to transform data science workflows.
+                        Imagine describing a dataset and a research question in plain English, and having an agent
+                        generate the appropriate statistical model, clean the data, run diagnostics, check for
+                        multicollinearity, test for heteroscedasticity, visualize the results, and write a preliminary
+                        interpretation — all before you've finished your coffee. This isn't science fiction; it's
+                        happening now, albeit imperfectly.
+                    </p>
+
+                    <p>
+                        The imperfections are important to acknowledge. Agents can hallucinate — generating
+                        plausible-sounding but incorrect statistical procedures. They can optimize for the wrong
+                        objective function, producing code that runs without error but answers the wrong question. The
+                        human in the loop isn't obsolete; they've been promoted from coder to auditor, from typist to
+                        critical thinker. And frankly, that's a better use of a statistician's training.
+                    </p>
+
+                    <h2>The Philosophical Undercurrent</h2>
+
+                    <p>
+                        There's a deeper question lurking beneath the technical excitement: what does it mean to program
+                        when the act of programming is being automated? If the unique human contribution to software
+                        development was the translation of intent into instruction — the act of thinking precisely
+                        enough to tell a machine what to do — what happens when the machine can infer the intent
+                        directly?
+                    </p>
+
+                    <p>
+                        I think the answer is that programming was never really about code. Code was the medium, not the
+                        message. The real skill was always problem decomposition, systems thinking, and the ability to
+                        model reality in abstract terms. Agentic programming doesn't replace these skills. If anything,
+                        it amplifies their importance. The better you can articulate what you want, the more powerful
+                        the agent becomes. Clarity of thought is the new syntax.
+                    </p>
+
+                    <blockquote>
+                        The computer is not doing what you told it to do. It is doing what you asked it to do. And the
+                        gap between those two things is where all the interesting problems live.
+                    </blockquote>
+
+                    <p>
+                        We stand at a threshold. The tools are getting smarter, the feedback loops are getting tighter,
+                        and the barrier between having an idea and deploying it is getting thinner. For a student at the
+                        beginning of a career in statistics and data science, this isn't a threat — it's the most
+                        exciting development I can imagine. The agents are here. The question is: what will we build
+                        with them?
+                    </p>
+
+                    <div class="post-signature">
+                        — MUKTADIR
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="site-footer section">
+                <div class="footer-inner">
+                    <div class="footer-email">
+                        <span>somiomuktadir@gmail.com</span>
+                        <button class="copy-btn" onclick="copyEmail(event)" aria-label="Copy email address">COPY
+                        </button>
+                    </div>
+                    <a href="https://github.com/som1o" target="_blank" rel="noopener noreferrer"
+                        class="footer-github">github.com/som1o</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script defer src="../scripts/main.js"></script>
+</body>
+
+</html>
