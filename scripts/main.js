@@ -6,40 +6,30 @@
 /* global gsap, ScrollTrigger */
 
 // --- GLOBAL: copyEmail() ---
-window.copyEmail = function (event) {
+window.copyEmail = async function (event) {
     const email = 'somiomuktadir@gmail.com';
     const btn = event ? event.target.closest('.copy-btn') || event.target : document.querySelector('.copy-btn');
 
-    navigator.clipboard.writeText(email).then(() => {
+    try {
+        await navigator.clipboard.writeText(email);
         if (btn) {
             const originalText = btn.textContent;
             btn.textContent = 'COPIED ✓';
             btn.classList.add('copied');
             btn.style.transform = 'scale(1.1)';
-            setTimeout(() => { btn.style.transform = 'scale(1)'; }, 150);
+            setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.classList.remove('copied');
-            }, 2000);
+            }, 2500);
         }
-    }).catch(() => {
-        const textarea = document.createElement('textarea');
-        textarea.value = email;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
+    } catch (err) {
+        console.error('Failed to copy email: ', err);
         if (btn) {
-            btn.textContent = 'COPIED ✓';
-            btn.classList.add('copied');
-            setTimeout(() => {
-                btn.textContent = 'COPY';
-                btn.classList.remove('copied');
-            }, 2000);
+            btn.textContent = 'ERROR';
+            setTimeout(() => { btn.textContent = 'COPY'; }, 2000);
         }
-    });
+    }
 };
 
 // --- MAIN IIFE ---
@@ -206,17 +196,17 @@ window.copyEmail = function (event) {
 
         if (isMenuOpen) {
             overlay.style.visibility = 'visible';
-            tl.to(overlay, { opacity: 1, duration: 0.4, ease: 'power2.inOut' })
+            tl.to(overlay, { opacity: 1, duration: 0.5, ease: 'power3.inOut' })
                 .fromTo('.menu-link', {
-                    y: 80, opacity: 0, skewY: 6
+                    y: 80, opacity: 0, skewY: 4
                 }, {
                     y: 0, opacity: 1, skewY: 0,
-                    stagger: 0.08, duration: 0.7, ease: 'power4.out'
-                }, '-=0.2')
+                    stagger: 0.1, duration: 0.8, ease: 'power4.out'
+                }, '-=0.25')
                 .fromTo('.overlay-footer', {
                     y: 20, opacity: 0
                 }, {
-                    y: 0, opacity: 1, duration: 0.5, ease: 'power2.out'
+                    y: 0, opacity: 1, duration: 0.7, ease: 'power3.out'
                 }, '-=0.5');
         } else {
             tl.to(overlay, {
@@ -298,7 +288,7 @@ window.copyEmail = function (event) {
         const removeHover = () => cursor.classList.remove('is-hover');
 
         document.body.addEventListener('mouseover', (e) => {
-            if (e.target.closest('a, button, .menu-toggle, .theme-toggle')) addHover();
+            if (e.target.closest('a, button, .menu-toggle, .theme-toggle, .glass-card')) addHover();
             else removeHover();
         });
     };
@@ -315,9 +305,9 @@ window.copyEmail = function (event) {
         const loadingLine = document.getElementById('loading-line');
         if (loadingLine) {
             gsap.to(loadingLine, {
-                width: '100%', duration: 0.8, ease: 'power2.inOut',
+                width: '100%', duration: 1.0, ease: 'power4.inOut',
                 onComplete: () => {
-                    gsap.to(loadingLine, { opacity: 0, duration: 0.3, delay: 0.2 });
+                    gsap.to(loadingLine, { opacity: 0, duration: 0.4, delay: 0.1 });
                 }
             });
         }
@@ -327,8 +317,8 @@ window.copyEmail = function (event) {
         if (mainContent) {
             const sections = mainContent.querySelectorAll('.section, .hero, .back-link-container, .site-footer');
             gsap.fromTo(sections,
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out', delay: 0.3 }
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: 'power4.out', delay: 0.2 }
             );
         }
 
@@ -337,12 +327,12 @@ window.copyEmail = function (event) {
             const cards = document.querySelectorAll('.glass-card, .archive-item');
             cards.forEach((card) => {
                 gsap.fromTo(card,
-                    { opacity: 0, y: 25 },
+                    { opacity: 0, y: 35 },
                     {
-                        opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+                        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
                         scrollTrigger: {
                             trigger: card,
-                            start: 'top 90%',
+                            start: 'top 85%',
                             toggleActions: 'play none none none',
                             once: true
                         }
