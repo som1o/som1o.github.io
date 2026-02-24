@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Muktadir Somio</title>
     <meta name="description"
-        content="Showcase of projects by Muktadir Somio, ranging from statistics and data science to C++ developments.">
-    <meta name="keywords" content="Muktadir Somio Projects, Statistics, Data Science, C++, Earthquake Analysis">
+        content="Showcase of projects by Muktadir Somio, including Seldon, a C++ analytical pipeline for structured CSV data.">
+    <meta name="keywords" content="Muktadir Somio Projects, Seldon, C++17, CMake, CSV Analytics, Statistical Analysis">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Projects | Muktadir Somio">
-    <meta property="og:description" content="A collection of my work in data science and software development.">
+    <meta property="og:description" content="A collection of my work in data science and software development, featuring Seldon.">
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="styles/main.css">
@@ -30,70 +30,33 @@
         <main id="main-content">
 
             <!-- HERO -->
-            <section class="hero section" style="min-height: 45vh;">
+            <section class="hero hero-compact section">
                 <h1 class="hero-title">Build &amp; <span class="text-accent">Explore</span></h1>
             </section>
 
             <!-- PROJECTS GRID -->
             <section class="section">
-                <div class="section-label">Selected Works</div>
-                <div class="projects-grid">
+                <div class="section-label">Featured Project</div>
+                <div class="projects-grid single-item">
 
                     <!-- PROJECT 1 -->
                     <div class="glass-card project-card">
                         <div>
-                            <span class="tag tag-project">Website</span>
-                            <h2>som1o.github.io</h2>
+                            <span class="tag tag-project">Data Engineering</span>
+                            <h2>Seldon</h2>
                             <p>
-                                Source code of this website. A glassmorphic portfolio built to showcase my
-                                academic journey, thoughts, and technical projects with an emphasis on immersive design.
-                            </p>
-                            <ul class="tech-list">
-                                <li>HTML5 &amp; Semantic SEO</li>
-                                <li>Vanilla CSS3 (Custom Properties)</li>
-                                <li>JavaScript (GSAP &amp; ScrollTrigger)</li>
-                            </ul>
-                        </div>
-                        <a href="https://github.com/som1o/som1o.github.io" target="_blank" rel="noopener noreferrer"
-                            class="project-link">VIEW ON GITHUB →</a>
-                    </div>
-
-                    <!-- PROJECT 2 -->
-                    <div class="glass-card project-card">
-                        <div>
-                            <span class="tag tag-statistics">Group Project</span>
-                            <h2>project_cpp</h2>
-                            <p>
-                                Analyzing earthquake data and estimating likelihood. A dive into statistical analysis
-                                using C++ frameworks with modular architecture.
+                                A C++ analytical pipeline for structured CSV data. It runs typed ingestion,
+                                preprocessing, statistical analysis, baseline benchmarking, neural relevance analysis,
+                                and automated report synthesis in one execution flow.
                             </p>
                             <ul class="tech-list">
                                 <li>C++17</li>
-                                <li>STL Algorithms &amp; Data Structures</li>
-                                <li>Modular OOP Design</li>
+                                <li>CMake 3.16+</li>
+                                <li>Markdown / HTML Report Generation</li>
                             </ul>
                         </div>
-                        <a href="https://github.com/som1o/project_cpp" target="_blank" rel="noopener noreferrer"
-                            class="project-link">VIEW ON GITHUB →</a>
-                    </div>
-
-                    <!-- PROJECT 3 -->
-                    <div class="glass-card project-card">
-                        <div>
-                            <span class="tag tag-programming">Academic Codebase</span>
-                            <h2>codes</h2>
-                            <p>
-                                A collection of codes necessary for review, practice, and lab use. Documentation of the
-                                learning process in computer science fundamentals.
-                            </p>
-                            <ul class="tech-list">
-                                <li>C / C++</li>
-                                <li>Data Structures</li>
-                                <li>Algorithm Implementation</li>
-                            </ul>
-                        </div>
-                        <a href="https://github.com/som1o/codes" target="_blank" rel="noopener noreferrer"
-                            class="project-link">VIEW ON GITHUB →</a>
+                        <a href="https://github.com/som1o/seldon" target="_blank" rel="noopener noreferrer"
+                            class="project-link">View on GitHub →</a>
                     </div>
 
                 </div>
@@ -104,7 +67,7 @@
                 <div class="footer-inner">
                     <div class="footer-email">
                         <span>somiomuktadir@gmail.com</span>
-                        <button class="copy-btn" onclick="copyEmail(event)" aria-label="Copy email address">COPY
+                        <button class="copy-btn" onclick="copyEmail(event)" aria-label="Copy email address">Copy
                         </button>
                     </div>
                     <a href="https://github.com/som1o" target="_blank" rel="noopener noreferrer"

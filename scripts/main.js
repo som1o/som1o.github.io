@@ -5,16 +5,17 @@
 
 /* global gsap, ScrollTrigger */
 
+const CONTACT_EMAIL = 'somiomuktadir@gmail.com';
+
 // --- GLOBAL: copyEmail() ---
 window.copyEmail = async function (event) {
-    const email = 'somiomuktadir@gmail.com';
     const btn = event ? event.target.closest('.copy-btn') || event.target : document.querySelector('.copy-btn');
 
     try {
-        await navigator.clipboard.writeText(email);
+        await navigator.clipboard.writeText(CONTACT_EMAIL);
         if (btn) {
             const originalText = btn.textContent;
-            btn.textContent = 'COPIED ✓';
+            btn.textContent = 'Copied ✓';
             btn.classList.add('copied');
             btn.style.transform = 'scale(1.1)';
             setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
@@ -26,8 +27,8 @@ window.copyEmail = async function (event) {
     } catch (err) {
         console.error('Failed to copy email: ', err);
         if (btn) {
-            btn.textContent = 'ERROR';
-            setTimeout(() => { btn.textContent = 'COPY'; }, 2000);
+            btn.textContent = 'Error';
+            setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
         }
     }
 };
@@ -37,9 +38,8 @@ window.copyEmail = async function (event) {
     'use strict';
 
     const CONFIG = {
-        email: 'somiomuktadir@gmail.com',
+        email: CONTACT_EMAIL,
         github: 'https://github.com/som1o',
-        twitter: 'https://twitter.com/MukS0m',
     };
 
     let isMenuOpen = false;
@@ -159,7 +159,6 @@ window.copyEmail = async function (event) {
                 </nav>
                 <div class="overlay-footer">
                     <div class="socials">
-                        <a href="${CONFIG.twitter}" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
                         <a href="${CONFIG.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
                     <div class="email-container">

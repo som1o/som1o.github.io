@@ -516,6 +516,62 @@ a:hover {
     font-size: clamp(0.95rem, 2vw, 1.1rem);
 }
 
+.hero-compact {
+    min-height: 45vh;
+}
+
+.post-header {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-header-meta {
+    margin-top: 1rem;
+}
+
+.inline-title {
+    margin-bottom: 1rem;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-small-muted {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+.text-small-muted.teaser {
+    margin: 0.75rem 0 1rem;
+}
+
+.teaser-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.teaser-link h3 {
+    margin: 0;
+}
+
+.inline-cta {
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.featured-copy {
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+}
+
 /* ============================================================
    GLASSMORPHIC CARDS
    ============================================================ */
@@ -623,6 +679,10 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.25rem;
+}
+
+.projects-grid.single-item {
+    max-width: 780px;
 }
 
 /* ============================================================
@@ -1061,6 +1121,10 @@ a:hover {
         gap: 1.5rem;
     }
 
+    .projects-grid.single-item {
+        grid-template-columns: 1fr;
+    }
+
     .archive-item {
         flex-direction: row;
         align-items: center;
@@ -1126,6 +1190,10 @@ a:hover {
 
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .projects-grid.single-item {
+        grid-template-columns: 1fr;
     }
 
     /* Show cursor on desktop */
